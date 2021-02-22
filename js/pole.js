@@ -259,28 +259,28 @@ function drawAlgorithm(arAlgorithm) {
     switch (arAlgorithm[i]['vector']) {
       case 'left':
         {
-          str += `<div class="col-xs-1 algorithmItem">
+          str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
                 <i class="fa fa-arrow-left"></i> ${arAlgorithm[i].kol}
                 </div>`;
         }
         break;
       case 'right':
         {
-          str += `<div class="col-xs-1 algorithmItem">
+          str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
                 <i class="fa fa-arrow-right"></i> ${arAlgorithm[i].kol}
                 </div>`;
         }
         break;
       case 'top':
         {
-          str += `<div class="col-xs-1 algorithmItem">
+          str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
                 <i class="fa fa-arrow-up"></i> ${arAlgorithm[i].kol}
                 </div>`;
         }
         break;
       case 'bottom':
         {
-          str += `<div class="col-xs-1 algorithmItem">
+          str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
                 <i class="fa fa-arrow-down"></i> ${arAlgorithm[i].kol}
                 </div>`;
         }

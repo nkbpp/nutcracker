@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link href="bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet" />
+<head>
+    <link href="bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet"/>
     <link
-      href="bootstrap-3.4.1-dist/css/bootstrap-theme.css"
-      rel="stylesheet"
+            href="bootstrap-3.4.1-dist/css/bootstrap-theme.css"
+            rel="stylesheet"
     />
     <link
-      href="assests/font-awesome-4.7.0/css/font-awesome.css"
-      rel="stylesheet"
+            href="assests/font-awesome-4.7.0/css/font-awesome.css"
+            rel="stylesheet"
     />
-    <link href="style.css" rel="stylesheet" />
-    <link href="style/pole.css" rel="stylesheet" />
-    <meta charset="UTF-8" />
+    <link href="style/style.css" rel="stylesheet"/>
+    <link href="style/pole.css" rel="stylesheet"/>
+    <link href="style/arrows.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
     <title>Nutcracker</title>
-  </head>
-  <body>
-    <div class="container containerPole">
-      <div id="pole"></div>
-    </div>
-    <div class="container bg2">
-      <div id="algorithm">
+</head>
+<body>
+<div class="container containerPole">
+    <div id="pole"></div>
+</div>
+<div class="container bg2">
+    <div id="algorithm">
         <div class="row"></div>
-      </div>
     </div>
-    <div class="container manage">
-      <div class="row">
-        <div class="col-xs-3">
-          <input type="button" id="left" value="лево" />
+</div>
+<div class="container manage">
+    <div class="row">
+        <div class="col-xs-4 col-xs-push-4 text-center">
+            <a href="#" id="top" class="button">
+                <i class="fa fa-arrow-up"></i>
+            </a>
         </div>
-        <div class="col-xs-3">
-          <input type="button" id="top" value="вверх" />
-        </div>
-        <div class="col-xs-3">
-          <input type="button" id="bottom" value="вниз" />
-        </div>
-
-        <div class="col-xs-3">
-          <input type="button" id="right" value="право" />
-        </div>
-      </div>
     </div>
-    <input type="button" id="ok" value="ok" />
+    <div class="row">
+        <div class="col-xs-4 col-xs-push-4 text-center">
+            <a href="#" id="left" class="button">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+            <a href="#" id="ok" class="button">
+                <i class="fa fa-check-circle-o"></i>
+            </a>
+            <a href="#" id="right" class="button">
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-xs-push-4 text-center">
+            <a href="#" id="bottom" class="button">
+                <i class="fa fa-arrow-down"></i>
+            </a>
+        </div>
+    </div>
+</div>
 
-    <script src="js/jquery-3.5.1.js"></script>
-    <script src="bootstrap-3.4.1-dist/js/bootstrap.js"></script>
-    <script src="js/pole.js"></script>
-    <script src="js/events.js"></script>
-  </body>
+
+<script src="js/jquery-3.5.1.js"></script>
+<script src="bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+<script src="js/pole.js"></script>
+<script src="js/events.js"></script>
+</body>
 </html>

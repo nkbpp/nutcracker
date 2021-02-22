@@ -1,0 +1,15 @@
+.manage a {
+    font-size: 30px;
+}
+
+.manage a:hover, .manage a:active {
+    text-decoration: none;
+}
+
+.algorithmItem.success {
+    color: green;
+}
+
+.algorithmItem.error {
+    color: red;
+}
