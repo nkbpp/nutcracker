@@ -25,23 +25,29 @@
   border-radius: 5px;
 }
 
-.start {
+.home {
   /* background-image: url(assests/img/hero.png); */
-  background-image: url(../assests/img/hero4.png);
+  background-image: url(../assests/img/ledy.png);
+}
+
+.hero {
+  background-image: url(../assests/img/hero.png);
+  background-color: transparent;
+  position: absolute;
 }
 
 .stop1 {
-  background-image: url(../assests/img/obstruction5.png);
+  background-image: url(../assests/img/obstruction.png);
 }
 
 .stop2 {
-  background-image: url(../assests/img/obstruction4.png);
+  background-image: url(../assests/img/obstruction2.png);
 }
 
 .stop3 {
-  background-image: url(../assests/img/obstruction6.png);
+  background-image: url(../assests/img/obstruction3.png);
 }
 
 .finish {
-  background-image: url(../assests/img/putin2.png);
+  background-image: url(../assests/img/ledy.png);
 }

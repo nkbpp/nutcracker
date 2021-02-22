@@ -112,6 +112,7 @@ class Arr {
     }
     if (i + 1 < arr.length && arr[i][j] + 1 == arr[i + 1][j]) {
       return 'bottom';
+
     }
     if (j - 1 >= 0 && arr[i][j] + 1 == arr[i][j - 1]) {
       return 'left';
@@ -234,7 +235,7 @@ function drawPole(arPoles) {
           break;
         case 'старт':
           {
-            str += `<div class="pole start"></div>`;
+            str += `<div class="pole home" ><div class="pole hero" id="hero"></div></div>`;
           }
           break;
         case 'финиш':
@@ -288,11 +289,11 @@ function drawAlgorithm(arAlgorithm) {
     }
   }
   $('#algorithm .row').html(str);
-  console.info($('#algorithm .row').width());
+
   let algorithmItemWidth = $('#algorithm .row>div').width();
   let allAlgorithmItemWidth = algorithmItemWidth * arAlgorithm.length;
 
-  console.info(console.info(allAlgorithmItemWidth));
+
   $('#algorithm .row div:first-child').css(
     'margin-left',
     ($('#algorithm .row').width() - allAlgorithmItemWidth) / 4
