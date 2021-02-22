@@ -1,16 +1,19 @@
 .containerPole {
+  background: #63086b;
+}
+
+#pole .row {
+  margin: 0;
+}
+
+#pole .row .col-xs-1 {
+  padding: 0;
+  padding: 2px;
+}
+
+.containerPole {
   margin-top: 10px;
-  padding-left: 3px;
-  padding-right: 3px;
-  padding-bottom: 3px;
-}
-
-#pole .col1 {
-  padding: 0px;
-}
-
-.row {
-  margin-top: 3px;
+  padding: 3px;
 }
 
 .pole {

@@ -1,17 +1,20 @@
-let COL = 4;
-let ROW = 12;
+let ROW = 4;
+let COL = 12;
 
 let arr;
+let algCheck;
 
 $(window).resize(function () {
   resizeCols();
 });
 
 function start() {
-  arr = new Arr(COL, ROW);
+  arr = new Arr(ROW, COL);
   console.log(arr);
   drawPole(arr.poles);
   drawAlgorithm(arr.algorithm);
+  algCheck = [];
+  algCheck = arr.algorithm.slice();
 }
 
 class Arr {
@@ -256,28 +259,28 @@ function drawAlgorithm(arAlgorithm) {
     switch (arAlgorithm[i]['vector']) {
       case 'left':
         {
-          str += `<div class="col1 col-xs-1 algorithmItem">
+          str += `<div class="col-xs-1 algorithmItem">
                 <i class="fa fa-arrow-left"></i> ${arAlgorithm[i].kol}
                 </div>`;
         }
         break;
       case 'right':
         {
-          str += `<div class="col1 col-xs-1 algorithmItem">
+          str += `<div class="col-xs-1 algorithmItem">
                 <i class="fa fa-arrow-right"></i> ${arAlgorithm[i].kol}
                 </div>`;
         }
         break;
       case 'top':
         {
-          str += `<div class="col1 col-xs-1 algorithmItem">
+          str += `<div class="col-xs-1 algorithmItem">
                 <i class="fa fa-arrow-up"></i> ${arAlgorithm[i].kol}
                 </div>`;
         }
         break;
       case 'bottom':
         {
-          str += `<div class="col1 col-xs-1 algorithmItem">
+          str += `<div class="col-xs-1 algorithmItem">
                 <i class="fa fa-arrow-down"></i> ${arAlgorithm[i].kol}
                 </div>`;
         }
@@ -286,8 +289,14 @@ function drawAlgorithm(arAlgorithm) {
   }
   $('#algorithm .row').html(str);
   console.info($('#algorithm .row').width());
-  console.info($('#algorithm .row>div').length);
-  console.info(arAlgorithm.length);
+  let algorithmItemWidth = $('#algorithm .row>div').width();
+  let allAlgorithmItemWidth = algorithmItemWidth * arAlgorithm.length;
+
+  console.info(console.info(allAlgorithmItemWidth));
+  $('#algorithm .row div:first-child').css(
+    'margin-left',
+    ($('#algorithm .row').width() - allAlgorithmItemWidth) / 4
+  );
 }
 
 function resizeCols() {
