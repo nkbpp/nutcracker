@@ -1,0 +1,44 @@
+.containerPole {
+  margin-top: 10px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-bottom: 3px;
+}
+
+#pole .col1 {
+  padding: 0px;
+}
+
+.row {
+  margin-top: 3px;
+}
+
+.pole {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.start {
+  /* background-image: url(assests/img/hero.png); */
+  background-image: url(../assests/img/hero3.png);
+}
+
+.stop1 {
+  background-image: url(../assests/img/obstruction5.png);
+}
+
+.stop2 {
+  background-image: url(../assests/img/obstruction4.png);
+}
+
+.stop3 {
+  background-image: url(../assests/img/obstruction6.png);
+}
+
+.finish {
+  background-image: url(../assests/img/ledy2.png);
+}
