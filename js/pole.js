@@ -217,6 +217,9 @@ function drawPole(arPoles) {
     str += "<div class='row'>";
     for (let j = 0; j < colCols; j++) {
       str += `<div class="col-xs-${12 / colCols}">`;
+      if(j==0 && arPoles[i][j+1].type=="старт"){
+        str += `<div class="pole home"></div>`;
+      }else
       switch (arPoles[i][j].subtype) {
         case 'преграда1':
           {
@@ -235,7 +238,7 @@ function drawPole(arPoles) {
           break;
         case 'старт':
           {
-            str += `<div class="pole home" ><div class="pole hero" id="hero"></div></div>`;
+            str += `<div class="pole start" ><div class="pole hero" id="hero"></div></div>`;
           }
           break;
         case 'финиш':

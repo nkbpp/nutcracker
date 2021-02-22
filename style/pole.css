@@ -1,5 +1,5 @@
 .containerPole {
-  background: #63086b;
+  background: #66a7a4;
 }
 
 #pole .row {
@@ -25,9 +25,14 @@
   border-radius: 5px;
 }
 
+.start {
+  /* background-image: url(assests/img/hero.png); */
+  background-image: url(../assests/img/start.png);
+}
+
 .home {
   /* background-image: url(assests/img/hero.png); */
-  background-image: url(../assests/img/ledy.png);
+  background-image: url(../assests/img/home.png);
 }
 
 .hero {

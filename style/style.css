@@ -1,11 +1,14 @@
 .bg2 {
-  background: #269abc;
+  background: #333;
 }
 
 .container {
   padding: 0;
+
+  width: 97%;
 }
 
 .algorithmItem {
   font-size: 30px;
+  color: #fffdfd;
 }
