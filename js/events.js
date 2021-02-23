@@ -27,21 +27,10 @@ function even(e) {
       );
     }
   } else {
-    // console.info(algCheck[0].vector == $(this).attr('id'));
-    // console.info(algCheck);
     if (algCheck[0].vector == $(this).attr('id')) {
       if (algCheck[0].kol == ++kolClick) {
         kolClick = 0;
         algCheck.shift();
-        // console.info($(this));
-        // console.log(arr.algorithm.length - algCheck.length - 1);
-        // console.info(
-        //   $(
-        //     "[data-algorithmId='" +
-        //       (arr.algorithm.length - algCheck.length - 1) +
-        //       "']"
-        //   )
-        // );
         $(
           "[data-algorithmId='" +
             (arr.algorithm.length - algCheck.length - 1) +
@@ -69,10 +58,41 @@ function even(e) {
 let kolClick = 0;
 $(document).ready(function () {
   $('body').on('click', 'a', even);
+
+  $('body').swipe({
+    swipe: function (
+      event,
+      direction,
+      distance,
+      duration,
+      fingerCount,
+      fingerData
+    ) {
+      let contextId = null;
+      switch (direction) {
+        case 'right':
+          contextId = '#right';
+          break;
+        case 'down':
+          contextId = '#bottom';
+          break;
+        case 'up':
+          contextId = '#top';
+          break;
+        case 'left':
+          contextId = '#left';
+          break;
+      }
+      if (contextId != null && algCheck.length > 0) {
+        let funcBind2 = even.bind($(contextId));
+        funcBind2(event);
+      }
+    },
+  });
 });
 
 $(document).keydown(function (e) {
-  console.log(e.which);
+  //console.log(e.which);
   let contextId = null;
   switch (e.which) {
     case 39:
