@@ -41,7 +41,12 @@ function even(e) {
             (arr.algorithm.length - algCheck.length - 1) +
             "']"
         ).addClass('success');
+
+        startAudio('soundCorrect');
         //подсветить
+      } else {
+        //промежуточно верно
+        startAudio('soundCorr');
       }
     } else {
       //анимация неправелльного ввода
@@ -51,6 +56,8 @@ function even(e) {
       $(
         "[data-algorithmId='" + (arr.algorithm.length - algCheck.length) + "']"
       ).addClass('error');
+
+      startAudio('soundError');
     }
   }
 }
@@ -116,3 +123,14 @@ $(document).keydown(function (e) {
     funcBind(e);
   }
 });
+
+function startAudio(id) {
+  let audios = document.querySelectorAll('audio');
+  audios.forEach((a) => {
+    a.pause();
+    a.currentTime = 0.0;
+  });
+
+  let audio = document.getElementById(id);
+  audio.play();
+}
