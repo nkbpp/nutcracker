@@ -2,6 +2,7 @@ function even(e) {
   console.info(this);
   if ($(this).attr('id') == 'ok') {
     if (algCheck.length == 0) {
+      startAudio('soundFanfary');
       //if (true) {
       let speed = 400;
       let time = 0;
@@ -65,6 +66,43 @@ function even(e) {
 let kolClick = 0;
 $(document).ready(function () {
   $('body').on('click', 'a', even);
+  $('body').on('click', 'input', function () {
+    if ($(this).attr('id') == 'checkSound') {
+      let audios = document.querySelectorAll('audio');
+      if ($('#checkSound').is(':checked')) {
+        console.log('is');
+        audios.forEach((a) => {
+          console.log(a.volume);
+          a.volume = 1;
+        });
+      } else {
+        console.log('not is');
+        audios.forEach((a) => {
+          console.log(a.volume);
+          a.volume = 0;
+        });
+      }
+    }
+  });
+
+  /*   $('body').on('click', 'input', function () {
+    if ($('#checkSound').is(':checked')) {
+      let audios = document.querySelectorAll('audio');
+      audios.forEach((a) => {
+        console.log(a.volume);
+        a.volume = 0;
+      });
+      // Отметить checkbox
+      //$('#checkSound').prop('checked', true);
+    } else {
+      let audios = document.querySelectorAll('audio');
+      audios.forEach((a) => {
+        a.volume = 1;
+      });
+      // Снять checkbox
+      //$('#checkSound').prop('checked', false);
+    }
+  }); */
 
   $('body').swipe({
     swipe: function (
@@ -125,6 +163,7 @@ $(document).keydown(function (e) {
 });
 
 function startAudio(id) {
+  //if ($('#checkSound').is(':checked')) {
   let audios = document.querySelectorAll('audio');
   audios.forEach((a) => {
     a.pause();
@@ -133,4 +172,5 @@ function startAudio(id) {
 
   let audio = document.getElementById(id);
   audio.play();
+  //}
 }
