@@ -10,7 +10,8 @@ $(window).resize(function () {
 
 function start() {
   arr = new Arr(ROW, COL);
-  console.log(arr);
+  console.log('arr=', arr);
+  console.log(arr.poles);
   drawPole(arr.poles);
   drawAlgorithm(arr.algorithm);
   algCheck = [];
@@ -18,10 +19,10 @@ function start() {
 }
 
 class Arr {
-  constructor(col, row) {
-    let shab = this.#createShab();
-    st: for (let i = 0; i < row; i++) {
-      for (let j = 0; j < col; j++) {
+  constructor(row, col) {
+    let shab = this.#createShab(row, col);
+    st: for (let i = 0; i < col; i++) {
+      for (let j = 0; j < row; j++) {
         if (shab[i][j] == 1) {
           this.startI = i;
           this.startJ = j;
@@ -30,13 +31,13 @@ class Arr {
       }
     }
 
-    this.poles = new Array(col);
+    this.poles = new Array(row);
     for (let i = 0; i < this.poles.length; i++) {
-      this.poles[i] = new Array(row);
+      this.poles[i] = new Array(col);
     }
 
-    for (let i = 0; i < col; i++) {
-      for (let j = 0; j < row; j++) {
+    for (let i = 0; i < row; i++) {
+      for (let j = 0; j < col; j++) {
         this.poles[i][j] = this.#pole(shab, i, j);
       }
     }
@@ -63,7 +64,9 @@ class Arr {
 
     // let k = 0;
     // while (k++ < 25) {
-    while (shab[i][j] != 0) {
+    console.log(shab);
+    console.log(this.poles);
+    while (shab[i][j] != 0 && j < 12) {
       if (this.poles[i][j].vector == '') {
         this.algorithm.push({ vector: v, kol });
       } else if (this.poles[i][j].vector == v) {
@@ -99,13 +102,145 @@ class Arr {
     }
   }
 
-  #createShab(params) {
-    return [
-      [0, 0, 0, 0, 0, 0, 0, 0, 13, 14, 15, 16],
-      [0, 0, 4, 5, 6, 7, 0, 0, 12, 0, 0, 17],
-      [0, 0, 3, 0, 0, 8, 9, 10, 11, 0, 19, 18],
-      [0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ];
+  #randVstart(max, arr, i, j) {
+    let r = null;
+    w: while (true) {
+      r = this.#getRandomArbitrary(1, max);
+      switch (r) {
+        //вверх
+        case 1:
+          {
+            if (i != 0) {
+              break w;
+            }
+          }
+          break;
+        //вниз
+        case 3:
+          {
+            if (i != arr.length - 1) {
+              break w;
+            }
+          }
+          break;
+        //прямо
+        case 2:
+          {
+            if (arr[i][j - 1] == 0) {
+              break w;
+            }
+          }
+          break;
+        default: {
+          break w;
+        }
+      }
+    }
+    return r;
+  }
+
+  #stepRight(arr, i, j, l) {
+    for (let index = 1; index <= l; index++) {
+      arr[i][j + index] = arr[i][j] + index;
+    }
+    return arr;
+  }
+
+  #stepTop(arr, i, j, l) {
+    for (let index = 1; index <= l; index++) {
+      arr[i - index][j] = arr[i][j] + index;
+    }
+    return arr;
+  }
+
+  #stepBottom(arr, i, j, l) {
+    for (let index = 1; index <= l; index++) {
+      arr[i + index][j] = arr[i][j] + index;
+    }
+    return arr;
+  }
+
+  #createShab(row, col) {
+    let arr = new Array(row);
+    for (var i = 0; i < arr.length; i++) {
+      arr[i] = new Array(col);
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr[i].length; j++) {
+        arr[i][j] = 0;
+      }
+    }
+
+    let tekI = this.#getRandomArbitrary(0, arr.length - 1);
+    let tekJ = 1;
+    arr[tekI][tekJ] = 1; //стартовое поле
+
+    //console.log(tekI, tekJ);
+
+    while (tekJ < arr[0].length - 2) {
+      let vector = this.#randVstart(3, arr, tekI, tekJ);
+      //console.log('v=' + vector);
+      switch (vector) {
+        case 1:
+          {
+            let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
+            this.#stepTop(arr, tekI, tekJ, l);
+            tekI -= l;
+          }
+          break;
+        case 3:
+          {
+            let l = this.#getRandomArbitrary(
+              1,
+              arr.length - 1 - (arr.length + tekI - arr.length)
+            );
+            this.#stepBottom(arr, tekI, tekJ, l);
+            tekI += l;
+          }
+          break;
+      }
+
+      //идем вперед
+      let l = this.#getRandomArbitrary(2, 3);
+      if (l + tekJ >= arr[0].length) {
+        //проверить чтобы не конец
+        l = arr[0].length - 1 - tekJ;
+      }
+      this.#stepRight(arr, tekI, tekJ, l);
+      tekJ += l;
+    }
+
+    //финалочка
+    /*     let vector = 1; //this.#randVstart(3, arr, tekI, tekJ);
+    console.log(arr);
+    console.log('vec=', vector);
+    console.log('i j', tekI, tekJ);
+    //конец
+    if (tekJ == arr[0].length - 1) {
+      switch (vector) {
+        case 1:
+          {
+            let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
+            console.log(tekI, tekJ, l);
+            this.#stepTop(arr, tekI, tekJ, l);
+            tekI -= l;
+          }
+          break;
+        case 3:
+          {
+                         let l = this.#getRandomArbitrary(
+              1,
+              arr.length - 1 - (arr.length + tekI - arr.length)
+            );
+            this.#stepBottom(arr, tekI, tekJ, l);
+            tekI += l; 
+          }
+          break;
+      }
+    } */
+
+    return arr;
   }
 
   #maxValue(arr) {
@@ -139,8 +274,8 @@ class Arr {
 
   #pole(shab, i, j) {
     let arr = {};
-    let col = shab.length;
-    let row = shab[0].length;
+    let row = shab.length;
+    let col = shab[0].length;
     arr.start = false;
     arr.finish = false;
 
@@ -176,34 +311,34 @@ class Arr {
         arr.finish = true;
       } else if (
         j != 0 &&
-        j != row - 1 &&
+        j != col - 1 &&
         shab[i][j - 1] != 0 &&
         shab[i][j + 1] != 0
       ) {
         arr.subtype = 1; // horizont
       } else if (
         i != 0 &&
-        i != col - 1 &&
+        i != row - 1 &&
         shab[i - 1][j] != 0 &&
         shab[i + 1][j] != 0
       ) {
         arr.subtype = 2; // vettical
       } else if (
-        i != col - 1 &&
-        j != row - 1 &&
+        i != row - 1 &&
+        j != col - 1 &&
         shab[i + 1][j] != 0 &&
         shab[i][j + 1] != 0
       ) {
         arr.subtype = 3; //
       } else if (
         i != 0 &&
-        j != row - 1 &&
+        j != col - 1 &&
         shab[i - 1][j] != 0 &&
         shab[i][j + 1] != 0
       ) {
         arr.subtype = 4; //
       } else if (
-        i != col - 1 &&
+        i != row - 1 &&
         j != 0 &&
         shab[i][j - 1] != 0 &&
         shab[i + 1][j] != 0

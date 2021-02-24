@@ -7,13 +7,23 @@ function even(e) {
       let speed = 400;
       let time = 0;
       arr.algorithm.forEach((al) => {
-        let lr = al.vector == 'bottom' ? '+=' : '-=';
+        for (let i = 0; i < al.kol; i++) {
+          let lr = al.vector == 'bottom' ? '+=' : '-=';
+          let o = {
+            [al.vector == 'bottom' ? 'top' : al.vector]:
+              lr + $('#hero').width(),
+          };
+          $('#hero').animate(o, speed, function () {});
+        }
+
+        /*         let lr = al.vector == 'bottom' ? '+=' : '-=';
         let o = {
           [al.vector == 'bottom' ? 'top' : al.vector]:
             lr + $('#hero').width() * al.kol,
         };
+        $('#hero').animate(o, speed * al.kol, function () {}); */
+
         time += speed * al.kol;
-        $('#hero').animate(o, speed * al.kol, function () {});
       });
       //замена картинок
       $('#hero').animate({ opacity: 0 }, 1000);
@@ -36,12 +46,9 @@ function even(e) {
           "[data-algorithmId='" +
             (arr.algorithm.length - algCheck.length - 1) +
             "']"
-        ).removeClass('error');
-        $(
-          "[data-algorithmId='" +
-            (arr.algorithm.length - algCheck.length - 1) +
-            "']"
-        ).addClass('success');
+        )
+          .removeClass('error')
+          .addClass('success');
 
         startAudio('soundCorrect');
         //подсветить
@@ -51,12 +58,9 @@ function even(e) {
       }
     } else {
       //анимация неправелльного ввода
-      $(
-        "[data-algorithmId='" + (arr.algorithm.length - algCheck.length) + "']"
-      ).removeClass('success');
-      $(
-        "[data-algorithmId='" + (arr.algorithm.length - algCheck.length) + "']"
-      ).addClass('error');
+      $("[data-algorithmId='" + (arr.algorithm.length - algCheck.length) + "']")
+        .removeClass('success')
+        .addClass('error');
 
       startAudio('soundError');
     }
