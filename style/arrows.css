@@ -1,15 +1,27 @@
 .manage a {
-    font-size: 30px;
+  font-size: 30px;
 }
 
-.manage a:hover, .manage a:active {
-    text-decoration: none;
+.manage a:hover,
+.manage a:active {
+  text-decoration: none;
 }
 
 .algorithmItem.success {
-    color: #21ff51;
+  color: #21ff51;
 }
 
 .algorithmItem.error {
-    color: red;
+  color: red;
+}
+
+.algorithmItem {
+  font-size: 30px;
+  color: #fffdfd;
+  text-align: center;
+  padding: 0;
+}
+
+a.disabled {
+  pointer-events: none;
 }

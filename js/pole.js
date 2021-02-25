@@ -11,7 +11,6 @@ $(window).resize(function () {
 function start() {
   arr = new Arr(ROW, COL);
   console.log('arr=', arr);
-  console.log(arr.poles);
   drawPole(arr.poles);
   drawAlgorithm(arr.algorithm);
   algCheck = [];
@@ -62,20 +61,18 @@ class Arr {
     let v = this.poles[i][j].vector;
     let kol = 0;
 
-    // let k = 0;
-    // while (k++ < 25) {
-    console.log(shab);
-    console.log(this.poles);
-    while (shab[i][j] != 0 && j < 12) {
-      if (this.poles[i][j].vector == '') {
-        this.algorithm.push({ vector: v, kol });
-      } else if (this.poles[i][j].vector == v) {
+    while (true) {
+      if (j == 11) {
+      }
+      if (v == this.poles[i][j].vector) {
         kol++;
       } else {
         this.algorithm.push({ vector: v, kol });
         v = this.poles[i][j].vector;
         kol = 1;
       }
+
+      if (this.poles[i][j].vector == '') break;
 
       switch (v) {
         case 'right':
@@ -100,6 +97,7 @@ class Arr {
           break;
       }
     }
+    //console.log('algorithm', this.algorithm);
   }
 
   #randVstart(max, arr, i, j) {
@@ -160,6 +158,13 @@ class Arr {
     return arr;
   }
 
+  #stepLeft(arr, i, j, l) {
+    for (let index = 1; index <= l; index++) {
+      arr[i][j - index] = arr[i][j] + index;
+    }
+    return arr;
+  }
+
   #createShab(row, col) {
     let arr = new Array(row);
     for (var i = 0; i < arr.length; i++) {
@@ -176,11 +181,8 @@ class Arr {
     let tekJ = 1;
     arr[tekI][tekJ] = 1; //стартовое поле
 
-    //console.log(tekI, tekJ);
-
     while (tekJ < arr[0].length - 2) {
       let vector = this.#randVstart(3, arr, tekI, tekJ);
-      //console.log('v=' + vector);
       switch (vector) {
         case 1:
           {
@@ -212,35 +214,73 @@ class Arr {
     }
 
     //финалочка
-    /*     let vector = 1; //this.#randVstart(3, arr, tekI, tekJ);
-    console.log(arr);
+    let vector = this.#randVstart(3, arr, tekI, tekJ);
+    /*     console.log('arr', arr);
     console.log('vec=', vector);
-    console.log('i j', tekI, tekJ);
-    //конец
-    if (tekJ == arr[0].length - 1) {
-      switch (vector) {
-        case 1:
-          {
-            let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
-            console.log(tekI, tekJ, l);
-            this.#stepTop(arr, tekI, tekJ, l);
-            tekI -= l;
-          }
-          break;
-        case 3:
-          {
-                         let l = this.#getRandomArbitrary(
-              1,
-              arr.length - 1 - (arr.length + tekI - arr.length)
-            );
-            this.#stepBottom(arr, tekI, tekJ, l);
-            tekI += l; 
-          }
-          break;
+    console.log('i j', tekI, tekJ); */
+
+    switch (vector) {
+      case 1:
+        {
+          let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
+          this.#stepTop(arr, tekI, tekJ, l);
+          tekI -= l;
+        }
+        break;
+      case 3:
+        {
+          let l = this.#getRandomArbitrary(
+            1,
+            arr.length - 1 - (arr.length + tekI - arr.length)
+          );
+          this.#stepBottom(arr, tekI, tekJ, l);
+          tekI += l;
+        }
+        break;
+    }
+
+    //предпоследняя строка
+    if (tekJ == arr[0].length - 2) {
+      let rl = this.#getRandomArbitrary(1, 3);
+      if (rl != 1) {
+        this.#stepRight(arr, tekI, tekJ, 1);
+        tekJ += 1;
       }
-    } */
+    }
+
+    //конец последняя строка
+    if (tekJ == arr[0].length - 1) {
+      let rl = this.#getRandomArbitrary(1, 3);
+      if (rl != 1) {
+        //с какой то вероятностью идем в лево
+        let l = 0;
+        if (
+          arr[tekI][tekJ - 2] == 0 &&
+          (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 1] == 0)) &&
+          (tekI == arr.length - 1 ||
+            (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 1] == 0))
+        ) {
+          l = 1;
+          if (
+            arr[tekI][tekJ - 3] == 0 &&
+            (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 2] == 0)) &&
+            (tekI == arr.length - 1 ||
+              (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 2] == 0))
+          ) {
+            l = 2;
+          }
+        }
+        this.#stepLeft(arr, tekI, tekJ, l);
+      }
+    }
 
     return arr;
+    // return [
+    //   [0, 0, 0, 0, 5, 6, 7, 0, 11, 12, 13, 14],
+    //   [0, 1, 2, 3, 4, 0, 8, 9, 10, 0, 0, 15],
+    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16],
+    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    // ];
   }
 
   #maxValue(arr) {
@@ -400,6 +440,36 @@ function drawPole(arPoles) {
               str += `<div class="pole putin" id="putin"></div>`;
             }
             break;
+          case 1:
+            {
+              str += `<div class="pole way way1"></div>`;
+            }
+            break;
+          case 2:
+            {
+              str += `<div class="pole way"></div>`;
+            }
+            break;
+          case 3:
+            {
+              str += `<div class="pole duga"></div>`;
+            }
+            break;
+          case 4:
+            {
+              str += `<div class="pole duga duga4"></div>`;
+            }
+            break;
+          case 5:
+            {
+              str += `<div class="pole duga duga5"></div>`;
+            }
+            break;
+          case 6:
+            {
+              str += `<div class="pole duga duga6"></div>`;
+            }
+            break;
         }
       str += `</div>`;
     }
@@ -451,10 +521,23 @@ function drawAlgorithm(arAlgorithm) {
   let algorithmItemWidth = $('#algorithm .row>div').width();
   let allAlgorithmItemWidth = algorithmItemWidth * arAlgorithm.length;
 
-  $('#algorithm .row div:first-child').css(
-    'margin-left',
-    ($('#algorithm .row').width() - allAlgorithmItemWidth) / 4
-  );
+  // $('#algorithm .row div:first-child').css(
+  //   'margin-left',
+  //   ($('#algorithm .row').width() - allAlgorithmItemWidth) / 4
+  // );
+  if ($('#algorithm .row div').length < 12) {
+    $('#algorithm .row div:first-child').css(
+      'margin-left',
+      ($('#algorithm .row').width() - allAlgorithmItemWidth) / 2
+    );
+  } else if ($('#algorithm .row div').length > 12) {
+    $('#algorithm .row div:nth-child(13)').css(
+      'margin-left',
+      ($('#algorithm .row').width() -
+        algorithmItemWidth * ($('#algorithm .row div').length - 12)) /
+        2
+    );
+  }
 }
 
 function resizeCols() {

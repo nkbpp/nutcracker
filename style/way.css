@@ -1,0 +1,24 @@
+.way {
+  background-image: url(../assests/img/doroga.webp);
+}
+
+.way1 {
+  transform: rotate(90deg);
+}
+
+.duga {
+  background-image: url(../assests/img/duga.png);
+}
+
+.duga4 {
+  /* transform: rotate(180deg); */
+  transform: rotate(270deg);
+}
+
+.duga5 {
+  transform: rotate(90deg);
+}
+
+.duga6 {
+  transform: rotate(180deg);
+}

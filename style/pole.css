@@ -39,6 +39,7 @@
   background-image: url(../assests/img/hero.png);
   background-color: transparent;
   position: absolute;
+  z-index: 999999;
 }
 
 .stop1 {

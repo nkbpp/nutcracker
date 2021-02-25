@@ -1,41 +1,57 @@
 function even(e) {
-  console.info(this);
+  //console.info(this);
+  console.log('disabled', $('#ok').hasClass('disabled'));
+  //console.info($(this).children('i').hasClass('fa-check-circle-o'));
   if ($(this).attr('id') == 'ok') {
-    if (algCheck.length == 0) {
-      startAudio('soundFanfary');
-      //if (true) {
-      let speed = 400;
-      let time = 0;
-      arr.algorithm.forEach((al) => {
-        for (let i = 0; i < al.kol; i++) {
-          let lr = al.vector == 'bottom' ? '+=' : '-=';
-          let o = {
-            [al.vector == 'bottom' ? 'top' : al.vector]:
-              lr + $('#hero').width(),
-          };
-          $('#hero').animate(o, speed, function () {});
-        }
+    if (!$('#ok').hasClass('disabled')) {
+      if ($(this).children('i').hasClass('fa-check-circle-o')) {
+        if (algCheck.length == 0) {
+          $('#ok').addClass('disabled');
+          startAudio('soundFanfary');
+          //if (true) {
+          let speed = 400;
+          let time = 0;
+          arr.algorithm.forEach((al) => {
+            for (let i = 0; i < al.kol; i++) {
+              let lr = al.vector == 'bottom' ? '+=' : '-=';
+              let o = {
+                [al.vector == 'bottom' ? 'top' : al.vector]:
+                  lr + $('#hero').width(),
+              };
+              $('#hero').animate(o, speed, function () {});
+            }
 
-        /*         let lr = al.vector == 'bottom' ? '+=' : '-=';
+            /*  плавная ходьба      
+        let lr = al.vector == 'bottom' ? '+=' : '-=';
         let o = {
           [al.vector == 'bottom' ? 'top' : al.vector]:
             lr + $('#hero').width() * al.kol,
         };
         $('#hero').animate(o, speed * al.kol, function () {}); */
 
-        time += speed * al.kol;
-      });
-      //замена картинок
-      $('#hero').animate({ opacity: 0 }, 1000);
-      setTimeout(() => $('.finish').animate({ opacity: 0 }, 1000), time);
-      setTimeout(
-        () => $('.finish').addClass('finish2').removeClass('finish'),
-        time + 1000
-      );
-      setTimeout(
-        () => $('.finish2').animate({ opacity: 1 }, 1000),
-        time + 1000
-      );
+            time += speed * al.kol;
+          });
+          //замена картинок
+          $('#hero').animate({ opacity: 0 }, 1000);
+          setTimeout(() => $('.finish').animate({ opacity: 0 }, 1000), time);
+          setTimeout(
+            () => $('.finish').addClass('finish2').removeClass('finish'),
+            time + 1000
+          );
+          setTimeout(
+            () => $('.finish2').animate({ opacity: 1 }, 1000),
+            time + 1000
+          );
+          //значек обновить
+          setTimeout(() => {
+            $('#ok i').removeClass('fa-check-circle-o').addClass('fa-refresh');
+            $('#ok').removeClass('disabled');
+          }, time + 2000);
+        }
+      } else {
+        $('#ok i').removeClass('fa-refresh').addClass('fa-check-circle-o');
+        start();
+      }
     }
   } else {
     if (algCheck[0].vector == $(this).attr('id')) {
@@ -157,7 +173,10 @@ $(document).keydown(function (e) {
       contextId = '#left';
       break;
     case 13:
-      contextId = '#ok';
+      {
+        contextId = '#ok';
+      }
+
       break;
   }
   if (contextId != null && (algCheck.length > 0 || e.which == 13)) {
