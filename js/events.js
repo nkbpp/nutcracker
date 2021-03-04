@@ -144,6 +144,12 @@ $(document).ready(function () {
         });
       }
     }
+    if ($(this).attr('id') == 'checkStatic') {
+      if ($('#checkStatic').is(':checked')) {
+        start();
+      } else {
+      }
+    }
   });
 
   /*   $('body').on('click', 'input', function () {

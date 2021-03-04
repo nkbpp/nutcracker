@@ -166,23 +166,63 @@ class Arr {
   }
 
   #createShab(row, col) {
-    let arr = new Array(row);
-    for (var i = 0; i < arr.length; i++) {
-      arr[i] = new Array(col);
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr[i].length; j++) {
-        arr[i][j] = 0;
+    if (!$('#checkStatic').is(':checked')) {
+      let arr = new Array(row);
+      for (var i = 0; i < arr.length; i++) {
+        arr[i] = new Array(col);
       }
-    }
 
-    let tekI = this.#getRandomArbitrary(0, arr.length - 1);
-    let tekJ = 1;
-    arr[tekI][tekJ] = 1; //стартовое поле
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+          arr[i][j] = 0;
+        }
+      }
 
-    while (tekJ < arr[0].length - 2) {
+      let tekI = this.#getRandomArbitrary(0, arr.length - 1);
+      let tekJ = 1;
+      arr[tekI][tekJ] = 1; //стартовое поле
+
+      while (tekJ < arr[0].length - 2) {
+        let vector = this.#randVstart(3, arr, tekI, tekJ);
+        switch (vector) {
+          case 1:
+            {
+              let l = this.#getRandomArbitrary(
+                1,
+                arr.length + tekI - arr.length
+              );
+              this.#stepTop(arr, tekI, tekJ, l);
+              tekI -= l;
+            }
+            break;
+          case 3:
+            {
+              let l = this.#getRandomArbitrary(
+                1,
+                arr.length - 1 - (arr.length + tekI - arr.length)
+              );
+              this.#stepBottom(arr, tekI, tekJ, l);
+              tekI += l;
+            }
+            break;
+        }
+
+        //идем вперед
+        let l = this.#getRandomArbitrary(2, 3);
+        if (l + tekJ >= arr[0].length) {
+          //проверить чтобы не конец
+          l = arr[0].length - 1 - tekJ;
+        }
+        this.#stepRight(arr, tekI, tekJ, l);
+        tekJ += l;
+      }
+
+      //финалочка
       let vector = this.#randVstart(3, arr, tekI, tekJ);
+      /*     console.log('arr', arr);
+      console.log('vec=', vector);
+      console.log('i j', tekI, tekJ); */
+
       switch (vector) {
         case 1:
           {
@@ -203,84 +243,50 @@ class Arr {
           break;
       }
 
-      //идем вперед
-      let l = this.#getRandomArbitrary(2, 3);
-      if (l + tekJ >= arr[0].length) {
-        //проверить чтобы не конец
-        l = arr[0].length - 1 - tekJ;
-      }
-      this.#stepRight(arr, tekI, tekJ, l);
-      tekJ += l;
-    }
-
-    //финалочка
-    let vector = this.#randVstart(3, arr, tekI, tekJ);
-    /*     console.log('arr', arr);
-    console.log('vec=', vector);
-    console.log('i j', tekI, tekJ); */
-
-    switch (vector) {
-      case 1:
-        {
-          let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
-          this.#stepTop(arr, tekI, tekJ, l);
-          tekI -= l;
+      //предпоследняя строка
+      if (tekJ == arr[0].length - 2) {
+        let rl = this.#getRandomArbitrary(1, 3);
+        if (rl != 1) {
+          this.#stepRight(arr, tekI, tekJ, 1);
+          tekJ += 1;
         }
-        break;
-      case 3:
-        {
-          let l = this.#getRandomArbitrary(
-            1,
-            arr.length - 1 - (arr.length + tekI - arr.length)
-          );
-          this.#stepBottom(arr, tekI, tekJ, l);
-          tekI += l;
-        }
-        break;
-    }
-
-    //предпоследняя строка
-    if (tekJ == arr[0].length - 2) {
-      let rl = this.#getRandomArbitrary(1, 3);
-      if (rl != 1) {
-        this.#stepRight(arr, tekI, tekJ, 1);
-        tekJ += 1;
       }
-    }
 
-    //конец последняя строка
-    if (tekJ == arr[0].length - 1) {
-      let rl = this.#getRandomArbitrary(1, 3);
-      if (rl != 1) {
-        //с какой то вероятностью идем в лево
-        let l = 0;
-        if (
-          arr[tekI][tekJ - 2] == 0 &&
-          (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 1] == 0)) &&
-          (tekI == arr.length - 1 ||
-            (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 1] == 0))
-        ) {
-          l = 1;
+      //конец последняя строка
+      if (tekJ == arr[0].length - 1) {
+        let rl = this.#getRandomArbitrary(1, 3);
+        if (rl != 1) {
+          //с какой то вероятностью идем в лево
+          let l = 0;
           if (
-            arr[tekI][tekJ - 3] == 0 &&
-            (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 2] == 0)) &&
+            arr[tekI][tekJ - 2] == 0 &&
+            (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 1] == 0)) &&
             (tekI == arr.length - 1 ||
-              (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 2] == 0))
+              (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 1] == 0))
           ) {
-            l = 2;
+            l = 1;
+            if (
+              arr[tekI][tekJ - 3] == 0 &&
+              (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 2] == 0)) &&
+              (tekI == arr.length - 1 ||
+                (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 2] == 0))
+            ) {
+              l = 2;
+            }
           }
+          this.#stepLeft(arr, tekI, tekJ, l);
         }
-        this.#stepLeft(arr, tekI, tekJ, l);
       }
-    }
 
-    return arr;
-    // return [
-    //   [0, 0, 0, 0, 5, 6, 7, 0, 11, 12, 13, 14],
-    //   [0, 1, 2, 3, 4, 0, 8, 9, 10, 0, 0, 15],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    // ];
+      return arr;
+    } else {
+      return [
+        [0, 0, 0, 0, 0, 0, 0, 0, 13, 14, 15, 16],
+        [0, 0, 4, 5, 6, 7, 0, 0, 12, 0, 0, 17],
+        [0, 0, 3, 0, 0, 8, 9, 10, 11, 0, 19, 18],
+        [0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      ];
+    }
   }
 
   #maxValue(arr) {
