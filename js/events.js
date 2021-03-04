@@ -1,3 +1,5 @@
+event;
+
 function even(e) {
   //console.info(this);
   console.log('disabled', $('#ok').hasClass('disabled'));
@@ -11,17 +13,58 @@ function even(e) {
           //if (true) {
           let speed = 400;
           let time = 0;
-          arr.algorithm.forEach((al) => {
+
+          for (let j = 0; j < arr.algorithm.length; j++) {
+            let al = arr.algorithm[j];
             for (let i = 0; i < al.kol; i++) {
               let lr = al.vector == 'bottom' ? '+=' : '-=';
               let o = {
                 [al.vector == 'bottom' ? 'top' : al.vector]:
                   lr + $('#hero').width(),
               };
-              $('#hero').animate(o, speed, function () {});
+              $('#hero').animate(o, speed, function () {
+                if (arr.algorithm.length == j + 1 && i + 1 == al.kol) {
+                  console.log('animate start');
+                  $('#hero').animate({ opacity: 0 }, 1000);
+                  $('.finish').animate({ opacity: 0 }, 1000, function () {
+                    $('.finish').addClass('finish2').removeClass('finish');
+                    $('.finish2').animate({ opacity: 1 }, 1000, function () {
+                      $('#ok i')
+                        .removeClass('fa-check-circle-o')
+                        .addClass('fa-refresh');
+                      $('#ok').removeClass('disabled');
+                    });
+                  });
+                }
+              });
             }
-
-            /*  плавная ходьба      
+          }
+          /*           arr.algorithm.forEach((al) => {
+            for (let i = 0; i < al.kol; i++) {
+              let lr = al.vector == 'bottom' ? '+=' : '-=';
+              let o = {
+                [al.vector == 'bottom' ? 'top' : al.vector]:
+                  lr + $('#hero').width(),
+              };
+              $('#hero').animate(o, speed, function () {
+                if (i + 1 == al.kol) {
+                  console.log('animate start');
+                  $('#hero').animate({ opacity: 0 }, 1000);
+                  $('.finish').animate({ opacity: 0 }, 1000, function () {
+                    $('.finish').addClass('finish2').removeClass('finish');
+                    $('.finish2').animate({ opacity: 1 }, 1000, function () {
+                      $('#ok i')
+                        .removeClass('fa-check-circle-o')
+                        .addClass('fa-refresh');
+                      $('#ok').removeClass('disabled');
+                    });
+                  });
+                }
+              });
+            }
+            time += speed * al.kol;
+          }); */
+          /*  плавная ходьба      
         let lr = al.vector == 'bottom' ? '+=' : '-=';
         let o = {
           [al.vector == 'bottom' ? 'top' : al.vector]:
@@ -29,24 +72,22 @@ function even(e) {
         };
         $('#hero').animate(o, speed * al.kol, function () {}); */
 
-            time += speed * al.kol;
-          });
           //замена картинок
-          $('#hero').animate({ opacity: 0 }, 1000);
-          setTimeout(() => $('.finish').animate({ opacity: 0 }, 1000), time);
-          setTimeout(
-            () => $('.finish').addClass('finish2').removeClass('finish'),
-            time + 1000
-          );
-          setTimeout(
-            () => $('.finish2').animate({ opacity: 1 }, 1000),
-            time + 1000
-          );
+          // $('#hero').animate({ opacity: 0 }, 1000);
+          // setTimeout(() => $('.finish').animate({ opacity: 0 }, 1000), time);
+          // setTimeout(
+          //   () => $('.finish').addClass('finish2').removeClass('finish'),
+          //   time + 1000
+          // );
+          // setTimeout(
+          //   () => $('.finish2').animate({ opacity: 1 }, 1000),
+          //   time + 1000
+          // );
           //значек обновить
-          setTimeout(() => {
-            $('#ok i').removeClass('fa-check-circle-o').addClass('fa-refresh');
-            $('#ok').removeClass('disabled');
-          }, time + 2000);
+          // setTimeout(() => {
+          //   $('#ok i').removeClass('fa-check-circle-o').addClass('fa-refresh');
+          //   $('#ok').removeClass('disabled');
+          // }, time + 2000);
         }
       } else {
         $('#ok i').removeClass('fa-refresh').addClass('fa-check-circle-o');

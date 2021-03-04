@@ -440,12 +440,12 @@ function drawPole(arPoles) {
               str += `<div class="pole putin" id="putin"></div>`;
             }
             break;
-          case 1:
+          case 2:
             {
               str += `<div class="pole way way1"></div>`;
             }
             break;
-          case 2:
+          case 1:
             {
               str += `<div class="pole way"></div>`;
             }
