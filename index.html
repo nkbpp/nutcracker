@@ -1,28 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link href="bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet" />
-    <link
-      href="bootstrap-3.4.1-dist/css/bootstrap-theme.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assests/font-awesome-4.7.0/css/font-awesome.css"
-      rel="stylesheet"
-    />
-    <link href="style/style.css" rel="stylesheet" />
-    <link href="style/pole.css" rel="stylesheet" />
-    <link href="style/arrows.css" rel="stylesheet" />
-    <link href="style/way.css" rel="stylesheet" />
-    <link href="style/main.css" rel="stylesheet" />
-    <meta charset="UTF-8" />
+<head>
+    <link href="bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap-3.4.1-dist/css/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="assests/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet"/>
+    <link href="style/style.css" rel="stylesheet"/>
+    <link href="style/pole.css" rel="stylesheet"/>
+    <link href="style/arrows.css" rel="stylesheet"/>
+    <link href="style/way.css" rel="stylesheet"/>
+    <link href="style/main.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
     <title>Nutcracker</title>
-  </head>
-  <body>
-  <div class="main-page">
-    <a href="" class="btn btn-default btn-start">
-      Старт
+</head>
+<body>
+<div class="window window-start">
+    <a href="javascript:void(0);" class="btn btn-default btn-next">
+        Старт
     </a>
-  </div>
-  </body>
+</div>
+<div class="window window-theme">
+    тема
+</div>
+<div class="window window-hero">
+    герой
+</div>
+<div class="window window-settings">
+    ходы
+</div>
+<div class="window window-video">
+    видео
+</div>
+<div class="window window-game">
+    <div id="pole"></div>
+    <div id="algorithm">
+        <div class="row"></div>
+    </div>
+    <div class="container manage">
+        <div class="row">
+            <div class="col-xs-4 col-xs-push-4 text-center">
+                <a href="#" id="top" class="button">
+                    <i class="fa fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-xs-push-4 text-center">
+                <a href="#" id="left" class="button">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a href="#" id="ok" class="button">
+                    <i class="fa fa-check-circle-o"></i>
+                </a>
+                <a href="#" id="right" class="button">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-xs-push-4 text-center">
+                <a href="#" id="bottom" class="button">
+                    <i class="fa fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<audio src="music/error.mp3" id="soundError"></audio>
+<audio src="music/correct.mp3" id="soundCorrect"></audio>
+<audio src="music/corr.mp3" id="soundCorr"></audio>
+<audio src="music/fanfary.mp3" id="soundFanfary"></audio>
+
+<script src="js/jquery-3.5.1.js"></script>
+<script src="js/TouchSwipe-Jquery-Plugin-master/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js"></script>
+<script src="bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+<script src="js/pole.js"></script>
+<!--<script src="js/events.js"></script>-->
+<script src="js/script.js"></script>
 </html>
