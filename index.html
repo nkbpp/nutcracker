@@ -4,6 +4,21 @@
     <link href="bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="bootstrap-3.4.1-dist/css/bootstrap-theme.css" rel="stylesheet"/>
     <link href="assests/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,300italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assests/OwlCarousel/docs/assets/css/docs.theme.min.css">
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="assests/OwlCarousel/docs/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assests/OwlCarousel/docs/assets/owlcarousel/assets/owl.theme.default.min.css">
+
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+
     <link href="style/style.css" rel="stylesheet"/>
     <link href="style/pole.css" rel="stylesheet"/>
     <link href="style/arrows.css" rel="stylesheet"/>
@@ -14,18 +29,53 @@
 </head>
 <body>
 <div class="window window-start">
-    <a href="javascript:void(0);" class="btn btn-default btn-next">
+    <a href="javascript:void(0);" class="btn btn-default btn-start">
         Старт
     </a>
 </div>
 <div class="window window-theme">
-    тема
+    <div class="home-demo">
+        <div class="row">
+            <div class="large-12 columns">
+                <h3>Тема</h3>
+                <div class="owl-carousel themes-carousel">
+
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="btn btn-default btn-next btn-theme">
+            Выбрать
+        </a>
+    </div>
+
 </div>
-<div class="window window-hero">
+<!--<div class="window window-subtheme">
     герой
+</div>-->
+<div class="window window-hero">
+    <div class="home-demo">
+        <div class="row">
+            <div class="large-12 columns">
+                <h3>герой</h3>
+                <div class="owl-carousel hero-carousel">
+
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="btn btn-default btn-next btn-hero">
+            Выбрать
+        </a>
+    </div>
+
 </div>
 <div class="window window-settings">
-    ходы
+    <div class="home-demo">
+        <div class="row">
+            <div class="col-xs-4 text-center factor active" data-factor="1">1</div>
+            <div class="col-xs-4 text-center factor" data-factor="2">2</div>
+            <div class="col-xs-4 text-center factor" data-factor="3">3</div>
+        </div>
+    </div>
 </div>
 <div class="window window-video">
     видео
@@ -77,4 +127,6 @@
 <script src="js/pole.js"></script>
 <!--<script src="js/events.js"></script>-->
 <script src="js/script.js"></script>
+<script src="assests/OwlCarousel/docs/assets/owlcarousel/owl.carousel.js"></script>
+
 </html>

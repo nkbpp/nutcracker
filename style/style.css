@@ -7,3 +7,11 @@
 
   width: 97%;
 }
+
+.factor {
+  font-size: 30px;
+  border: 30px solid #ffffff;
+}
+.factor.active {
+  border: 30px solid #269abc;
+}
