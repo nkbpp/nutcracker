@@ -16,12 +16,36 @@ function even(e) {
 
           for (let j = 0; j < arr.algorithm.length; j++) {
             let al = arr.algorithm[j];
+            console.log('al = ');
+            console.log(al);
             for (let i = 0; i < al.kol; i++) {
-              let lr = al.vector == 'bottom' ? '+=' : '-=';
+              let lr;
+              let v;
+              if (al.vector == 'bottom') {
+                v = 'top';
+                lr = '+=';
+              }
+              if (al.vector == 'top') {
+                v = 'top';
+                lr = '-=';
+              }
+              if (al.vector == 'left') {
+                v = 'left';
+                lr = '-=';
+              }
+              if (al.vector == 'right') {
+                v = 'left';
+                lr = '+=';
+              }
+              //al.vector == 'bottom' || al.vector == 'right' ? '+=' : '-=';
               let o = {
-                [al.vector == 'bottom' ? 'top' : al.vector]:
-                  lr + $('#hero').width(),
+                //[al.vector == 'bottom' ? 'top' : al.vector]:
+                [v]: lr + $('#hero').width(),
               };
+
+              console.log('o = ');
+              console.log(o);
+
               $('#hero').animate(o, speed, function () {
                 if (arr.algorithm.length == j + 1 && i + 1 == al.kol) {
                   console.log('animate start');

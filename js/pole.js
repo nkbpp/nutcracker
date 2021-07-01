@@ -1,4 +1,4 @@
-let ROW = 12  ;
+let ROW = 10;
 let COL = 12;
 
 let arr;
@@ -24,9 +24,9 @@ class Arr {
     let shab = this.#createShab2(row, col); //!!!УДОЛИТЬ
     st: for (let i = 0; i < row; i++) {
       for (let j = 0; j < col; j++) {
-        console.log('i ' + i)
-        console.log('j '  + j)
-        console.log(shab[i][j])
+        //console.log('i ' + i);
+        //console.log('j ' + j);
+        //console.log(shab[i][j]);
         if (shab[i][j] == 1) {
           this.startI = i;
           this.startJ = j;
@@ -180,12 +180,12 @@ class Arr {
           (tekJ + 1 < COL && arr[i][tekJ + 1] != 0) ||
           (tekJ - 1 >= 0 && arr[i][tekJ - 1] != 0)
         ) {
-          console.log('Вверх нельзя проверка 2');
+          //console.log('Вверх нельзя проверка 2');
           return false;
         }
       }
     } else {
-      console.log('Вверх нельзя проверка 1 граница');
+      //console.log('Вверх нельзя проверка 1 граница');
       return false;
     }
     return true;
@@ -201,12 +201,12 @@ class Arr {
           (tekI + 1 < ROW && arr[tekI + 1][j] != 0) ||
           (tekI - 1 >= 0 && arr[tekI - 1][j] != 0)
         ) {
-          console.log('В лево нельзя проверка 2');
+          //console.log('В лево нельзя проверка 2');
           return false;
         }
       }
     } else {
-      console.log('В лево нельзя проверка 1 граница');
+      //console.log('В лево нельзя проверка 1 граница');
       return false;
     }
     return true;
@@ -222,12 +222,12 @@ class Arr {
           (tekJ + 1 < COL && arr[i][tekJ + 1] != 0) ||
           (tekJ - 1 >= 0 && arr[i][tekJ - 1] != 0)
         ) {
-          console.log('Вниз нельзя проверка 2');
+          //console.log('Вниз нельзя проверка 2');
           return false;
         }
       }
     } else {
-      console.log('Вниз нельзя проверка 1 граница');
+      //console.log('Вниз нельзя проверка 1 граница');
       return false;
     }
     return true;
@@ -243,12 +243,12 @@ class Arr {
           (tekI + 1 < ROW && arr[tekI + 1][j] != 0) ||
           (tekI - 1 >= 0 && arr[tekI - 1][j] != 0)
         ) {
-          console.log('в право нельзя проверка 2');
+          //console.log('в право нельзя проверка 2');
           return false;
         }
       }
     } else {
-      console.log('в право нельзя проверка 1 граница');
+      //console.log('в право нельзя проверка 1 граница');
       return false;
     }
     return true;
@@ -257,11 +257,9 @@ class Arr {
   #createShab2(row, col) {
     let arr;
     let STEP = 3;
-    let procent = STEP==1?34:STEP==2?26:18;
+    let procent = STEP == 1 ? 34 : STEP == 2 ? 26 : 18;
 
     do {
-
-
       arr = new Array(row);
 
       for (var i = 0; i < arr.length; i++) {
@@ -319,28 +317,28 @@ class Arr {
         switch (vector) {
           case 1:
             {
-              console.log('vector = Top');
+              //console.log('vector = Top');
               this.#stepTop(arr, tekI, tekJ, STEP);
               tekI -= STEP;
             }
             break;
           case 2:
             {
-              console.log('vector = Bottom');
+              //console.log('vector = Bottom');
               this.#stepBottom(arr, tekI, tekJ, STEP);
               tekI += STEP;
             }
             break;
           case 3:
             {
-              console.log('vector = Left');
+              //console.log('vector = Left');
               this.#stepLeft(arr, tekI, tekJ, STEP);
               tekJ -= STEP;
             }
             break;
           case 4:
             {
-              console.log('vector = Right');
+              //console.log('vector = Right');
               this.#stepRight(arr, tekI, tekJ, STEP);
               tekJ += STEP;
             }
@@ -349,7 +347,7 @@ class Arr {
         //console.log('vector = ', vector);
 
         //пробуем вверх
-        console.log('true ');
+        //console.log('true ');
         //break;
       }
       //console.log('max ' + this.#maxValue(arr));
