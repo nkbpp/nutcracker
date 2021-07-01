@@ -1,4 +1,4 @@
-let ROW = 6;
+let ROW = 12  ;
 let COL = 12;
 
 let arr;
@@ -19,10 +19,14 @@ function start() {
 
 class Arr {
   constructor(row, col) {
-    let shab = this.#createShab(row, col);
-    this.#createShab2(6, col); //!!!УДОЛИТЬ
-    st: for (let i = 0; i < col; i++) {
-      for (let j = 0; j < row; j++) {
+    // let shab = this.#createShab(row, col);
+    //console.log(this.#createShab(row, col))
+    let shab = this.#createShab2(row, col); //!!!УДОЛИТЬ
+    st: for (let i = 0; i < row; i++) {
+      for (let j = 0; j < col; j++) {
+        console.log('i ' + i)
+        console.log('j '  + j)
+        console.log(shab[i][j])
         if (shab[i][j] == 1) {
           this.startI = i;
           this.startJ = j;
@@ -252,8 +256,11 @@ class Arr {
 
   #createShab2(row, col) {
     let arr;
+    let STEP = 3;
+    let procent = STEP==1?34:STEP==2?26:18;
+
     do {
-      let STEP = 1;
+
 
       arr = new Array(row);
 
@@ -348,7 +355,7 @@ class Arr {
       //console.log('max ' + this.#maxValue(arr));
     } while (
       this.#maxValue(arr) <
-      ((30 * 100) / (COL * ROW)) * ((COL * ROW) / 100)
+      ((procent * 100) / (COL * ROW)) * ((COL * ROW) / 100)
     ); //процент заполнения поля первая цифра
 
     console.log('Сгенерированный массив'); //!!!

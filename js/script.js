@@ -52,7 +52,7 @@ $(document).ready(function () {
         var heroCarousel = $('.themes-carousel')
 
         carouselInit(heroCarousel);
-
+        scroll($(this))
     });
 
 
@@ -73,11 +73,16 @@ $(document).ready(function () {
 
         var heroCarousel = $('.hero-carousel');
         carouselInit(heroCarousel);
+        scroll($(this))
 
     });
 
     $('.btn-hero').click(function (event) {
         HERO = $(".hero-carousel .active").eq(1).find('.item').attr('id')
+        scroll($(this))
+        $('#video video').trigger('play');
+        // document.getElementById('video1').play();
+
     });
 
     $('.factor').click(function (e) {
@@ -93,9 +98,9 @@ $(document).ready(function () {
 
 
 
-    $('.btn-start').click();//убрать
-    $('.btn-theme').click();//убрать
-    $('.btn-hero').click();//убрать
+    // $('.btn-start').click();//убрать
+    // $('.btn-theme').click();//убрать
+    // $('.btn-hero').click();//убрать
 
     function generateThemes() {
 
@@ -119,4 +124,15 @@ $(document).ready(function () {
             }
         })
     }
+
+    function scroll(el){
+        $("html, body").animate({
+            scrollTop: $(el.attr("href")).offset().top + "px"
+        }, {
+            duration: 500,
+            easing: "swing"
+        });
+        return false;
+    }
+
 });

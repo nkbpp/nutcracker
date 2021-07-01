@@ -15,3 +15,12 @@
 .factor.active {
   border: 30px solid #269abc;
 }
+
+video {
+  width: 100%;
+  height: 100%;
+}
+
+#algorithm {
+  background: #333333;
+}

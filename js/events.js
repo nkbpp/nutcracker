@@ -2,7 +2,7 @@ event;
 
 function even(e) {
   //console.info(this);
-  console.log('disabled', $('#ok').hasClass('disabled'));
+  // console.log('disabled', $('#ok').hasClass('disabled'));
   //console.info($(this).children('i').hasClass('fa-check-circle-o'));
   if ($(this).attr('id') == 'ok') {
     if (!$('#ok').hasClass('disabled')) {
@@ -126,8 +126,8 @@ function even(e) {
 
 let kolClick = 0;
 $(document).ready(function () {
-  $('body').on('click', 'a', even);
-  $('body').on('click', 'input', function () {
+  $('.manage').on('click', 'a', even);
+  $('.manage').on('click', 'input', function () {
     if ($(this).attr('id') == 'checkSound') {
       let audios = document.querySelectorAll('audio');
       if ($('#checkSound').is(':checked')) {
@@ -171,7 +171,7 @@ $(document).ready(function () {
     }
   }); */
 
-  $('body').swipe({
+  $('#pole').swipe({
     swipe: function (
       event,
       direction,
