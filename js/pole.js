@@ -254,103 +254,129 @@ class Arr {
     return true;
   }
 
+  #generateArr(row, col, STEP) {
+    arr = new Array(row);
+
+    for (var i = 0; i < arr.length; i++) {
+      arr[i] = new Array(col);
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr[i].length; j++) {
+        arr[i][j] = 0;
+      }
+    } //делаем массив и зополняем 0ми
+
+    let tekI = this.#getRandomArbitrary(0, arr.length - 1);
+    let tekJ = this.#getRandomArbitrary(0, col - 1);
+
+    //let tekI = 0; //!
+    //let tekJ = 0; //!
+
+    arr[tekI][tekJ] = 1; //стартовое поле
+    //arr[1][3] = 1; //стартовое поле //!
+
+    while (
+      this.#canStepArrTop(arr, tekI, tekJ, STEP) ||
+      this.#canStepArrBottom(arr, tekI, tekJ, STEP) ||
+      this.#canStepArrLeft(arr, tekI, tekJ, STEP) ||
+      this.#canStepArrRight(arr, tekI, tekJ, STEP)
+    ) {
+      let vector = 0;
+      while (vector == 0) {
+        vector = this.#getRandomArbitrary(1, 4);
+        //console.log('vector = ', vector);
+        switch (vector) {
+          case 1:
+            vector = this.#canStepArrTop(arr, tekI, tekJ, STEP) ? vector : 0;
+            break;
+          case 2:
+            vector = this.#canStepArrBottom(arr, tekI, tekJ, STEP) ? vector : 0;
+            break;
+          case 3:
+            vector = this.#canStepArrLeft(arr, tekI, tekJ, STEP) ? vector : 0;
+            break;
+          case 4:
+            vector = this.#canStepArrRight(arr, tekI, tekJ, STEP) ? vector : 0;
+            break;
+          default:
+            vector = 0;
+            break;
+        }
+      }
+
+      switch (vector) {
+        case 1:
+          {
+            //console.log('vector = Top');
+            this.#stepTop(arr, tekI, tekJ, STEP);
+            tekI -= STEP;
+          }
+          break;
+        case 2:
+          {
+            //console.log('vector = Bottom');
+            this.#stepBottom(arr, tekI, tekJ, STEP);
+            tekI += STEP;
+          }
+          break;
+        case 3:
+          {
+            //console.log('vector = Left');
+            this.#stepLeft(arr, tekI, tekJ, STEP);
+            tekJ -= STEP;
+          }
+          break;
+        case 4:
+          {
+            //console.log('vector = Right');
+            this.#stepRight(arr, tekI, tekJ, STEP);
+            tekJ += STEP;
+          }
+          break;
+      }
+    }
+    return arr;
+  }
+
+  #arrProc(row, col, STEP) {
+    let max = 0;
+    let sum = 0;
+
+    for (let i = 0; i < 100; i++) {
+      let maxArr = this.#maxValue(this.#generateArr(row, col, STEP));
+      sum += maxArr;
+      max = max < maxArr ? maxArr : max;
+    }
+
+    let srznach = sum / 100;
+
+    /*     console.log(
+      'srznach = ' + srznach + ' or ' + ((row * col) / 100) * srznach + '%'
+    );
+    console.log('max = ' + max + ' or ' + ((row * col) / 100) * max + '%'); */
+
+    console.log(
+      'itog proc = ',
+      ((row * col) / 100) * srznach +
+        (((row * col) / 100) * max - ((row * col) / 100) * srznach) / 3
+    );
+
+    return (
+      ((row * col) / 100) * srznach +
+      (((row * col) / 100) * max - ((row * col) / 100) * srznach) / 3
+    );
+  }
+
   #createShab2(row, col) {
     let arr;
     let STEP = 3;
-    let procent = STEP == 1 ? 34 : STEP == 2 ? 26 : 18;
+
+    let procent = this.#arrProc(row, col, STEP);
+    //let procent = STEP == 1 ? 34 : STEP == 2 ? 26 : 18;
 
     do {
-      arr = new Array(row);
-
-      for (var i = 0; i < arr.length; i++) {
-        arr[i] = new Array(col);
-      }
-
-      for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
-          arr[i][j] = 0;
-        }
-      } //делаем массив и зополняем 0ми
-
-      let tekI = this.#getRandomArbitrary(0, arr.length - 1);
-      let tekJ = this.#getRandomArbitrary(0, col - 1);
-
-      //let tekI = 0; //!
-      //let tekJ = 0; //!
-
-      arr[tekI][tekJ] = 1; //стартовое поле
-      //arr[1][3] = 1; //стартовое поле //!
-
-      while (
-        this.#canStepArrTop(arr, tekI, tekJ, STEP) ||
-        this.#canStepArrBottom(arr, tekI, tekJ, STEP) ||
-        this.#canStepArrLeft(arr, tekI, tekJ, STEP) ||
-        this.#canStepArrRight(arr, tekI, tekJ, STEP)
-      ) {
-        let vector = 0;
-        while (vector == 0) {
-          vector = this.#getRandomArbitrary(1, 4);
-          //console.log('vector = ', vector);
-          switch (vector) {
-            case 1:
-              vector = this.#canStepArrTop(arr, tekI, tekJ, STEP) ? vector : 0;
-              break;
-            case 2:
-              vector = this.#canStepArrBottom(arr, tekI, tekJ, STEP)
-                ? vector
-                : 0;
-              break;
-            case 3:
-              vector = this.#canStepArrLeft(arr, tekI, tekJ, STEP) ? vector : 0;
-              break;
-            case 4:
-              vector = this.#canStepArrRight(arr, tekI, tekJ, STEP)
-                ? vector
-                : 0;
-              break;
-            default:
-              vector = 0;
-              break;
-          }
-        }
-
-        switch (vector) {
-          case 1:
-            {
-              //console.log('vector = Top');
-              this.#stepTop(arr, tekI, tekJ, STEP);
-              tekI -= STEP;
-            }
-            break;
-          case 2:
-            {
-              //console.log('vector = Bottom');
-              this.#stepBottom(arr, tekI, tekJ, STEP);
-              tekI += STEP;
-            }
-            break;
-          case 3:
-            {
-              //console.log('vector = Left');
-              this.#stepLeft(arr, tekI, tekJ, STEP);
-              tekJ -= STEP;
-            }
-            break;
-          case 4:
-            {
-              //console.log('vector = Right');
-              this.#stepRight(arr, tekI, tekJ, STEP);
-              tekJ += STEP;
-            }
-            break;
-        }
-        //console.log('vector = ', vector);
-
-        //пробуем вверх
-        //console.log('true ');
-        //break;
-      }
-      //console.log('max ' + this.#maxValue(arr));
+      arr = this.#generateArr(row, col, STEP);
     } while (
       this.#maxValue(arr) <
       ((procent * 100) / (COL * ROW)) * ((COL * ROW) / 100)
