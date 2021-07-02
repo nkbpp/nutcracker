@@ -1,49 +1,48 @@
 .window {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
 .window:nth-child(1) {
-    top: 0;
+  top: 0;
 }
 
 .window:nth-child(2) {
-    top: 100%;
+  top: 100%;
 }
 
 .window:nth-child(3) {
-    top: 200%;
+  top: 200%;
 }
 
 .window:nth-child(4) {
-    top: 300%;
+  top: 300%;
 }
 
 .window:nth-child(5) {
-    top: 400%;
+  top: 400%;
 }
 
 .window:nth-child(6) {
-    top: 500%;
+  top: 500%;
 }
 
 .window:nth-child(7) {
-    top: 600%;
+  top: 600%;
 }
 
 .window:nth-child(8) {
-    top: 700%;
+  top: 700%;
 }
 
 .window.window-start {
-    background: url("../assests/img/index.png");
-    background-size: cover;
-    background-position: center;
+  background: url('../assests/img/index.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .window.window-theme {
-
 }
 
 .window.window-hero {
@@ -58,13 +57,16 @@
 .window.window-game {
 }
 
-
-
 .btn-next {
-    position: relative;
-    margin: 0 auto;
-    display: block;
-    width: max-content;
-    top: 80%;
-    font-size: 49px;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  width: max-content;
+  top: 80%;
+  font-size: 49px;
+}
+
+html,
+body {
+  overflow: hidden;
 }
