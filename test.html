@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="assests/slick/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="assests/slick/slick/slick-theme.css"/>
+    <meta charset="UTF-8"/>
+    <title>Nutcracker</title>
+</head>
+<body>
+
+
+<div class="slider single-item">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+</div>
+</body>
+<audio src="music/error.mp3" id="soundError"></audio>
+<audio src="music/correct.mp3" id="soundCorrect"></audio>
+<audio src="music/corr.mp3" id="soundCorr"></audio>
+<audio src="music/fanfary.mp3" id="soundFanfary"></audio>
+
+<script src="js/jquery-3.5.1.js"></script>
+<script src="assests/slick/slick/slick.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.single-item').slick({
+            centerMode: true,
+            infinite: true,
+            dots: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                }
+            ]
+        });
+    });
+</script>
+</html>

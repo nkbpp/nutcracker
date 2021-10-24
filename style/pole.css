@@ -36,7 +36,7 @@
   background-image: url(../assests/img/home.png);
 }
 
-.hero {
+#pole .hero {
   background-image: url(../assests/img/hero.png);
   background-color: transparent;
   position: absolute;

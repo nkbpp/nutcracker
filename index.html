@@ -6,7 +6,7 @@
     <link href="assests/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet"/>
 
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,300italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assests/OwlCarousel/docs/assets/css/docs.theme.min.css">
+<!--    <link rel="stylesheet" href="assests/OwlCarousel/docs/assets/css/docs.theme.min.css">-->
     <!-- Owl Stylesheets -->
     <link rel="stylesheet" href="assests/OwlCarousel/docs/assets/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="assests/OwlCarousel/docs/assets/owlcarousel/assets/owl.theme.default.min.css">
@@ -18,32 +18,34 @@
     <![endif]-->
 
 
-
+    <link rel="stylesheet" href="assests/style/themes/main-theme.css">
     <link href="style/style.css" rel="stylesheet"/>
     <link href="style/pole.css" rel="stylesheet"/>
     <link href="style/arrows.css" rel="stylesheet"/>
     <link href="style/way.css" rel="stylesheet"/>
     <link href="style/main.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="assests/style/themes/kindergarten/kindergarten.css">
+
     <meta charset="UTF-8"/>
     <title>Nutcracker</title>
 </head>
 <body>
 <div class="window window-start">
-    <a href="#theme" class="btn btn-default btn-start">
+    <a href="#hero-window" class="btn btn-default btn-start">
         Старт
     </a>
 </div>
-<div class="window window-theme" id="theme">
+<div class="window window-theme" id="theme" style="display: none">
     <div class="home-demo">
+        <h3>Тема</h3>
         <div class="row">
             <div class="large-12 columns">
-                <h3>Тема</h3>
-                <div class="owl-carousel themes-carousel">
+                <div class="owl-carousel themes-carousel choose-list" id="themes-list">
 
                 </div>
             </div>
         </div>
-        <a href="#hero-window" class="btn btn-default btn-next btn-theme">
+        <a href="#settings" class="btn btn-default btn-next btn-theme">
             Выбрать
         </a>
     </div>
@@ -56,8 +58,8 @@
     <div class="home-demo">
         <div class="row">
             <div class="large-12 columns">
-                <h3>герой</h3>
-                <div class="owl-carousel hero-carousel">
+                <h3>Герой</h3>
+                <div class="owl-carousel themes-carousel choose-list" id="heroes-list">
 
                 </div>
             </div>
@@ -70,24 +72,25 @@
 </div>
 <div class="window window-settings" id="settings">
     <div class="home-demo">
+        <h3>Множитель</h3>
         <div class="row">
             <div class="col-xs-4 text-center factor active" data-factor="1">1</div>
             <div class="col-xs-4 text-center factor" data-factor="2">2</div>
             <div class="col-xs-4 text-center factor" data-factor="3">3</div>
         </div>
     </div>
-    <a href="#video" class="btn btn-default btn-next btn-hero">
+    <a href="#window-game" class="btn btn-default btn-next btn-factor">
         Выбрать
     </a>
 </div>
-<div class="window window-video" id="video">
+<div class="window window-video" id="video" style="display: none">
     <video width="400" height="300" controls="controls" id="video1">
         <source src="assests/video/1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
         Тег video не поддерживается вашим браузером.
         <a href="video/duel.mp4">Скачайте видео</a>.
     </video>
 </div>
-<div class="window window-game">
+<div class="window window-game" id="window-game">
     <div id="pole"></div>
     <div id="algorithm">
         <div class="row"></div>
@@ -95,27 +98,27 @@
     <div class="container manage">
         <div class="row">
             <div class="col-xs-4 col-xs-push-4 text-center">
-                <a href="#" id="top" class="button">
+                <a href="javascript:void(0)" id="top" class="button">
                     <i class="fa fa-arrow-up"></i>
                 </a>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-4 col-xs-push-4 text-center">
-                <a href="#" id="left" class="button">
+                <a href="javascript:void(0)" id="left" class="button">
                     <i class="fa fa-arrow-left"></i>
                 </a>
-                <a href="#" id="ok" class="button">
+                <a href="javascript:void(0)" id="ok" class="button">
                     <i class="fa fa-check-circle-o"></i>
                 </a>
-                <a href="#" id="right" class="button">
+                <a href="javascript:void(0)" id="right" class="button">
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-4 col-xs-push-4 text-center">
-                <a href="#" id="bottom" class="button">
+                <a href="javascript:void(0)" id="bottom" class="button">
                     <i class="fa fa-arrow-down"></i>
                 </a>
             </div>

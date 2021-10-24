@@ -1,7 +1,13 @@
+.hide {
+    display: none;
+    height: 0;
+}
+
 .window {
     width: 100%;
     height: 100%;
     position: absolute;
+    text-align: center;
 }
 
 .window:nth-child(1) {
@@ -40,6 +46,7 @@
     background: url("../assests/img/index.png");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .window.window-theme {
@@ -59,7 +66,7 @@
 }
 
 
-
+.btn-start,
 .btn-next {
     position: relative;
     margin: 0 auto;
@@ -67,4 +74,71 @@
     width: max-content;
     top: 80%;
     font-size: 49px;
+}
+
+.window .btn {
+    position: absolute;
+    width: 250px;
+    left: calc(50% - 125px);
+    top: 50%;
+    margin: 0 auto;
+    background: #004972;
+    color: #c8cccb;
+    border-color: #004972;
+}
+
+.window-start .btn {
+    top: 75%;
+}
+
+.owl-item.active:nth-child(2){
+    border: 1px solid black;
+}
+
+
+.row {
+    max-width: 100%;
+}
+
+.home-demo ,
+.home-demo .row,
+.home-demo .row  .columns
+{
+    height: 100%;
+}
+
+.choose-list {
+    display: block;
+
+    height: 25%;
+    width: 100%;
+
+}
+
+.choose-list .item {
+    display: inline-block;
+    float: none;
+    background: none;
+}
+
+.choose-list .item .item-inner {
+    background: #ff3f4d;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #ff3f4d;
+}
+
+.choose-list .item .item-inner:hover,
+.choose-list .item .item-inner.active {
+    border-width: 3px;
+    border-color: #1b6d85;
+    border-style: solid;
+}
+
+.home-demo h2 {
+    padding: 0;
+    color: #808080;
+}
+.item-inner h2 {
+    padding: 5rem 0;
 }

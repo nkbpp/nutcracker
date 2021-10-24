@@ -1,0 +1,44 @@
+.window-game .stop1,
+.window-game .stop2,
+.window-game .stop3 {
+    background-image: url("../Fon.png");
+}
+
+.kindergarten .choose-list .kapelka .item-inner {
+    background-image: url("kapelka.png");
+}
+
+.kindergarten .choose-list .ogonek .item-inner {
+    background-image: url("Ogonek.png");
+}
+
+.kindergarten .choose-list .veterok .item-inner {
+    background-image: url("Veterok.png");
+}
+
+.kindergarten .choose-list .ross .item-inner {
+    background-image: url("Ross.png");
+}
+
+#pole.kapelka .hero {
+    background-image: url("kapelka.png");
+}
+
+#pole.ogonek .hero {
+    background-image: url("Ogonek.png");
+}
+
+#pole.veterok .hero {
+    background-image: url("Veterok.png");
+}
+
+#pole.ross .hero {
+    background-image: url("Ross.png");
+}
+
+.window-game .kindergarten .finish {
+    background-image: url("vospitatel.png");
+}
+.window-game .kindergarten .finish2 {
+    background-image: url("vospitatel.png");
+}

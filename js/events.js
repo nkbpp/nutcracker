@@ -26,15 +26,15 @@ function even(e) {
                 if (arr.algorithm.length == j + 1 && i + 1 == al.kol) {
                   console.log('animate start');
                   $('#hero').animate({ opacity: 0 }, 1000);
-                  $('.finish').animate({ opacity: 0 }, 1000, function () {
-                    $('.finish').addClass('finish2').removeClass('finish');
-                    $('.finish2').animate({ opacity: 1 }, 1000, function () {
+                  // $('.finish').animate({ opacity: 0 }, 1000, function () {
+                    // $('.finish').addClass('finish2').removeClass('finish');
+                    // $('.finish2').animate({ opacity: 1 }, 1000, function () {
                       $('#ok i')
                         .removeClass('fa-check-circle-o')
                         .addClass('fa-refresh');
                       $('#ok').removeClass('disabled');
-                    });
-                  });
+                    // });
+                  // });
                 }
               });
             }
