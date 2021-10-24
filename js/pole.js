@@ -47,18 +47,18 @@ class Arr {
     }
 
     //add putin
-    // while (true) {
-    //   let putinJ = Math.round(
-    //     Math.random() *
-    //       (this.poles[0].length - 1 - (this.poles[0].length - 2)) +
-    //       (this.poles[0].length - 2)
-    //   );
-    //   let putinI = Math.round(Math.random() * (this.poles.length - 1));
-    //   if (this.poles[putinI][putinJ].type == 'преграда') {
-    //     this.poles[putinI][putinJ].subtype = 'путин';
-    //     break;
-    //   }
-    // }
+    while (true) {
+      let putinJ = Math.round(
+        Math.random() *
+          (this.poles[0].length - 1 - (this.poles[0].length - 2)) +
+          (this.poles[0].length - 2)
+      );
+      let putinI = Math.round(Math.random() * (this.poles.length - 1));
+      if (this.poles[putinI][putinJ].type == 'преграда') {
+        this.poles[putinI][putinJ].subtype = 'путин';
+        break;
+      }
+    }
 
     this.algorithm = [];
     let i = this.startI,

@@ -78,7 +78,7 @@ $(document).ready(function () {
         Object.keys(themes_settings[THEME].heroes).forEach(hero => {
             let class_ = themes_settings[THEME].heroes[hero]['class'];
             let name_ = themes_settings[THEME].heroes[hero]['name'];
-            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-hero="${class_}">
+            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-hero="${hero}">
                         <h2>${name_}</h2>
                    <div class="item-inner">
                         <h2></h2>
