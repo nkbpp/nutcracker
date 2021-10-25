@@ -124,12 +124,12 @@ function even(e) {
         kolClick = 0;
         algCheck.shift();
         $(
-          "[data-algorithmId='" +
+            "[data-algorithmId='" +
             (arr.algorithm.length - algCheck.length - 1) +
             "']"
         )
-          .removeClass('error')
-          .addClass('success');
+            .removeClass('error')
+            .addClass('success');
 
         startAudio('soundCorrect');
         //подсветить
@@ -140,8 +140,8 @@ function even(e) {
     } else {
       //анимация неправелльного ввода
       $("[data-algorithmId='" + (arr.algorithm.length - algCheck.length) + "']")
-        .removeClass('success')
-        .addClass('error');
+          .removeClass('success')
+          .addClass('error');
 
       startAudio('soundError');
     }
@@ -197,12 +197,12 @@ $(document).ready(function () {
 
   $('#pole').swipe({
     swipe: function (
-      event,
-      direction,
-      distance,
-      duration,
-      fingerCount,
-      fingerData
+        event,
+        direction,
+        distance,
+        duration,
+        fingerCount,
+        fingerData
     ) {
       let contextId = null;
       switch (direction) {
@@ -244,9 +244,9 @@ $(document).keydown(function (e) {
       contextId = '#left';
       break;
     case 13:
-      {
-        contextId = '#ok';
-      }
+    {
+      contextId = '#ok';
+    }
 
       break;
   }

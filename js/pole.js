@@ -24,9 +24,9 @@ class Arr {
     let shab = this.#createShab2(row, col); //!!!УДОЛИТЬ
     st: for (let i = 0; i < row; i++) {
       for (let j = 0; j < col; j++) {
-        console.log('i ' + i)
-        console.log('j '  + j)
-        console.log(shab[i][j])
+        //console.log('i ' + i);
+        //console.log('j ' + j);
+        //console.log(shab[i][j]);
         if (shab[i][j] == 1) {
           this.startI = i;
           this.startJ = j;
@@ -49,7 +49,7 @@ class Arr {
     //add putin
     while (true) {
       let putinJ = Math.round(
-        Math.random() *
+          Math.random() *
           (this.poles[0].length - 1 - (this.poles[0].length - 2)) +
           (this.poles[0].length - 2)
       );
@@ -62,7 +62,7 @@ class Arr {
 
     this.algorithm = [];
     let i = this.startI,
-      j = this.startJ;
+        j = this.startJ;
     let v = this.poles[i][j].vector;
     let kol = 0;
 
@@ -81,24 +81,24 @@ class Arr {
 
       switch (v) {
         case 'right':
-          {
-            j++;
-          }
+        {
+          j++;
+        }
           break;
         case 'top':
-          {
-            i--;
-          }
+        {
+          i--;
+        }
           break;
         case 'bottom':
-          {
-            i++;
-          }
+        {
+          i++;
+        }
           break;
         case 'left':
-          {
-            j--;
-          }
+        {
+          j--;
+        }
           break;
       }
     }
@@ -110,29 +110,29 @@ class Arr {
     w: while (true) {
       r = this.#getRandomArbitrary(1, max);
       switch (r) {
-        //вверх
+          //вверх
         case 1:
-          {
-            if (i != 0) {
-              break w;
-            }
+        {
+          if (i != 0) {
+            break w;
           }
+        }
           break;
-        //вниз
+          //вниз
         case 3:
-          {
-            if (i != arr.length - 1) {
-              break w;
-            }
+        {
+          if (i != arr.length - 1) {
+            break w;
           }
+        }
           break;
-        //прямо
+          //прямо
         case 2:
-          {
-            if (arr[i][j - 1] == 0) {
-              break w;
-            }
+        {
+          if (arr[i][j - 1] == 0) {
+            break w;
           }
+        }
           break;
         default: {
           break w;
@@ -175,17 +175,17 @@ class Arr {
       //проверка верхней границы
       for (let i = tekI - 1; i >= tekI - STEP; i--) {
         if (
-          arr[i][tekJ] != 0 ||
-          (i - 1 >= 0 && arr[i - 1][tekJ] != 0) ||
-          (tekJ + 1 < COL && arr[i][tekJ + 1] != 0) ||
-          (tekJ - 1 >= 0 && arr[i][tekJ - 1] != 0)
+            arr[i][tekJ] != 0 ||
+            (i - 1 >= 0 && arr[i - 1][tekJ] != 0) ||
+            (tekJ + 1 < COL && arr[i][tekJ + 1] != 0) ||
+            (tekJ - 1 >= 0 && arr[i][tekJ - 1] != 0)
         ) {
-          console.log('Вверх нельзя проверка 2');
+          //console.log('Вверх нельзя проверка 2');
           return false;
         }
       }
     } else {
-      console.log('Вверх нельзя проверка 1 граница');
+      //console.log('Вверх нельзя проверка 1 граница');
       return false;
     }
     return true;
@@ -196,17 +196,17 @@ class Arr {
       //проверка левого края
       for (let j = tekJ - 1; j >= tekJ - STEP; j--) {
         if (
-          arr[tekI][j] != 0 ||
-          (j - 1 >= 0 && arr[tekI][j - 1] != 0) ||
-          (tekI + 1 < ROW && arr[tekI + 1][j] != 0) ||
-          (tekI - 1 >= 0 && arr[tekI - 1][j] != 0)
+            arr[tekI][j] != 0 ||
+            (j - 1 >= 0 && arr[tekI][j - 1] != 0) ||
+            (tekI + 1 < ROW && arr[tekI + 1][j] != 0) ||
+            (tekI - 1 >= 0 && arr[tekI - 1][j] != 0)
         ) {
-          console.log('В лево нельзя проверка 2');
+          //console.log('В лево нельзя проверка 2');
           return false;
         }
       }
     } else {
-      console.log('В лево нельзя проверка 1 граница');
+      //console.log('В лево нельзя проверка 1 граница');
       return false;
     }
     return true;
@@ -217,17 +217,17 @@ class Arr {
       //проверка нижней границы
       for (let i = tekI + 1; i <= tekI + STEP; i++) {
         if (
-          arr[i][tekJ] != 0 ||
-          (i + 1 <= ROW - 1 && arr[i + 1][tekJ] != 0) ||
-          (tekJ + 1 < COL && arr[i][tekJ + 1] != 0) ||
-          (tekJ - 1 >= 0 && arr[i][tekJ - 1] != 0)
+            arr[i][tekJ] != 0 ||
+            (i + 1 <= ROW - 1 && arr[i + 1][tekJ] != 0) ||
+            (tekJ + 1 < COL && arr[i][tekJ + 1] != 0) ||
+            (tekJ - 1 >= 0 && arr[i][tekJ - 1] != 0)
         ) {
-          console.log('Вниз нельзя проверка 2');
+          //console.log('Вниз нельзя проверка 2');
           return false;
         }
       }
     } else {
-      console.log('Вниз нельзя проверка 1 граница');
+      //console.log('Вниз нельзя проверка 1 граница');
       return false;
     }
     return true;
@@ -238,125 +238,149 @@ class Arr {
       //проверка правого края
       for (let j = tekJ + 1; j <= tekJ + STEP; j++) {
         if (
-          arr[tekI][j] != 0 ||
-          (j + 1 <= COL - 1 && arr[tekI][j + 1] != 0) ||
-          (tekI + 1 < ROW && arr[tekI + 1][j] != 0) ||
-          (tekI - 1 >= 0 && arr[tekI - 1][j] != 0)
+            arr[tekI][j] != 0 ||
+            (j + 1 <= COL - 1 && arr[tekI][j + 1] != 0) ||
+            (tekI + 1 < ROW && arr[tekI + 1][j] != 0) ||
+            (tekI - 1 >= 0 && arr[tekI - 1][j] != 0)
         ) {
-          console.log('в право нельзя проверка 2');
+          //console.log('в право нельзя проверка 2');
           return false;
         }
       }
     } else {
-      console.log('в право нельзя проверка 1 граница');
+      //console.log('в право нельзя проверка 1 граница');
       return false;
     }
     return true;
   }
 
-  #createShab2(row, col) {
-    let arr;
-    let STEP = 3;
-    let procent = STEP==1?34:STEP==2?26:18;
+  #generateArr(row, col, STEP) {
+    arr = new Array(row);
 
-    do {
+    for (var i = 0; i < arr.length; i++) {
+      arr[i] = new Array(col);
+    }
 
-
-      arr = new Array(row);
-
-      for (var i = 0; i < arr.length; i++) {
-        arr[i] = new Array(col);
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr[i].length; j++) {
+        arr[i][j] = 0;
       }
+    } //делаем массив и зополняем 0ми
 
-      for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
-          arr[i][j] = 0;
-        }
-      } //делаем массив и зополняем 0ми
+    let tekI = this.#getRandomArbitrary(0, arr.length - 1);
+    let tekJ = this.#getRandomArbitrary(0, col - 1);
 
-      let tekI = this.#getRandomArbitrary(0, arr.length - 1);
-      let tekJ = this.#getRandomArbitrary(0, col - 1);
+    //let tekI = 0; //!
+    //let tekJ = 0; //!
 
-      //let tekI = 0; //!
-      //let tekJ = 0; //!
+    arr[tekI][tekJ] = 1; //стартовое поле
+    //arr[1][3] = 1; //стартовое поле //!
 
-      arr[tekI][tekJ] = 1; //стартовое поле
-      //arr[1][3] = 1; //стартовое поле //!
-
-      while (
+    while (
         this.#canStepArrTop(arr, tekI, tekJ, STEP) ||
         this.#canStepArrBottom(arr, tekI, tekJ, STEP) ||
         this.#canStepArrLeft(arr, tekI, tekJ, STEP) ||
         this.#canStepArrRight(arr, tekI, tekJ, STEP)
-      ) {
-        let vector = 0;
-        while (vector == 0) {
-          vector = this.#getRandomArbitrary(1, 4);
-          //console.log('vector = ', vector);
-          switch (vector) {
-            case 1:
-              vector = this.#canStepArrTop(arr, tekI, tekJ, STEP) ? vector : 0;
-              break;
-            case 2:
-              vector = this.#canStepArrBottom(arr, tekI, tekJ, STEP)
-                ? vector
-                : 0;
-              break;
-            case 3:
-              vector = this.#canStepArrLeft(arr, tekI, tekJ, STEP) ? vector : 0;
-              break;
-            case 4:
-              vector = this.#canStepArrRight(arr, tekI, tekJ, STEP)
-                ? vector
-                : 0;
-              break;
-            default:
-              vector = 0;
-              break;
-          }
-        }
-
+        ) {
+      let vector = 0;
+      while (vector == 0) {
+        vector = this.#getRandomArbitrary(1, 4);
+        //console.log('vector = ', vector);
         switch (vector) {
           case 1:
-            {
-              console.log('vector = Top');
-              this.#stepTop(arr, tekI, tekJ, STEP);
-              tekI -= STEP;
-            }
+            vector = this.#canStepArrTop(arr, tekI, tekJ, STEP) ? vector : 0;
             break;
           case 2:
-            {
-              console.log('vector = Bottom');
-              this.#stepBottom(arr, tekI, tekJ, STEP);
-              tekI += STEP;
-            }
+            vector = this.#canStepArrBottom(arr, tekI, tekJ, STEP) ? vector : 0;
             break;
           case 3:
-            {
-              console.log('vector = Left');
-              this.#stepLeft(arr, tekI, tekJ, STEP);
-              tekJ -= STEP;
-            }
+            vector = this.#canStepArrLeft(arr, tekI, tekJ, STEP) ? vector : 0;
             break;
           case 4:
-            {
-              console.log('vector = Right');
-              this.#stepRight(arr, tekI, tekJ, STEP);
-              tekJ += STEP;
-            }
+            vector = this.#canStepArrRight(arr, tekI, tekJ, STEP) ? vector : 0;
+            break;
+          default:
+            vector = 0;
             break;
         }
-        //console.log('vector = ', vector);
-
-        //пробуем вверх
-        console.log('true ');
-        //break;
       }
-      //console.log('max ' + this.#maxValue(arr));
+
+      switch (vector) {
+        case 1:
+        {
+          //console.log('vector = Top');
+          this.#stepTop(arr, tekI, tekJ, STEP);
+          tekI -= STEP;
+        }
+          break;
+        case 2:
+        {
+          //console.log('vector = Bottom');
+          this.#stepBottom(arr, tekI, tekJ, STEP);
+          tekI += STEP;
+        }
+          break;
+        case 3:
+        {
+          //console.log('vector = Left');
+          this.#stepLeft(arr, tekI, tekJ, STEP);
+          tekJ -= STEP;
+        }
+          break;
+        case 4:
+        {
+          //console.log('vector = Right');
+          this.#stepRight(arr, tekI, tekJ, STEP);
+          tekJ += STEP;
+        }
+          break;
+      }
+    }
+    return arr;
+  }
+
+  #arrProc(row, col, STEP) {
+    let max = 0;
+    let sum = 0;
+
+    for (let i = 0; i < 100; i++) {
+      let maxArr = this.#maxValue(this.#generateArr(row, col, STEP));
+      sum += maxArr;
+      max = max < maxArr ? maxArr : max;
+    }
+
+    let srznach = sum / 100;
+
+    /*     console.log(
+      'srznach = ' + srznach + ' or ' + ((row * col) / 100) * srznach + '%'
+    );
+    console.log('max = ' + max + ' or ' + ((row * col) / 100) * max + '%'); */
+
+    console.log(
+        'itog proc = ',
+        ((row * col) / 100) * srznach +
+        (((row * col) / 100) * max - ((row * col) / 100) * srznach) / 3
+    );
+
+    return (
+        ((row * col) / 100) * srznach +
+        (((row * col) / 100) * max - ((row * col) / 100) * srznach) / 3
+    );
+  }
+
+  #createShab2(row, col) {
+    let arr;
+    let STEP = 3;
+
+    let procent = this.#arrProc(row, col, STEP);
+    //let procent = STEP == 1 ? 34 : STEP == 2 ? 26 : 18;
+
+    do {
+      arr = this.#generateArr(row, col, STEP);
     } while (
-      this.#maxValue(arr) <
-      ((procent * 100) / (COL * ROW)) * ((COL * ROW) / 100)
-    ); //процент заполнения поля первая цифра
+        this.#maxValue(arr) <
+        ((procent * 100) / (COL * ROW)) * ((COL * ROW) / 100)
+        ); //процент заполнения поля первая цифра
 
     console.log('Сгенерированный массив'); //!!!
     console.log(arr); //!!!
@@ -391,21 +415,21 @@ class Arr {
       let vector = this.#randVstart(3, arr, tekI, tekJ);
       switch (vector) {
         case 1:
-          {
-            let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
-            this.#stepTop(arr, tekI, tekJ, l);
-            tekI -= l;
-          }
+        {
+          let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
+          this.#stepTop(arr, tekI, tekJ, l);
+          tekI -= l;
+        }
           break;
         case 3:
-          {
-            let l = this.#getRandomArbitrary(
+        {
+          let l = this.#getRandomArbitrary(
               1,
               arr.length - 1 - (arr.length + tekI - arr.length)
-            );
-            this.#stepBottom(arr, tekI, tekJ, l);
-            tekI += l;
-          }
+          );
+          this.#stepBottom(arr, tekI, tekJ, l);
+          tekI += l;
+        }
           break;
       }
 
@@ -427,21 +451,21 @@ class Arr {
 
     switch (vector) {
       case 1:
-        {
-          let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
-          this.#stepTop(arr, tekI, tekJ, l);
-          tekI -= l;
-        }
+      {
+        let l = this.#getRandomArbitrary(1, arr.length + tekI - arr.length);
+        this.#stepTop(arr, tekI, tekJ, l);
+        tekI -= l;
+      }
         break;
       case 3:
-        {
-          let l = this.#getRandomArbitrary(
+      {
+        let l = this.#getRandomArbitrary(
             1,
             arr.length - 1 - (arr.length + tekI - arr.length)
-          );
-          this.#stepBottom(arr, tekI, tekJ, l);
-          tekI += l;
-        }
+        );
+        this.#stepBottom(arr, tekI, tekJ, l);
+        tekI += l;
+      }
         break;
     }
 
@@ -461,17 +485,17 @@ class Arr {
         //с какой то вероятностью идем в лево
         let l = 0;
         if (
-          arr[tekI][tekJ - 2] == 0 &&
-          (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 1] == 0)) &&
-          (tekI == arr.length - 1 ||
-            (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 1] == 0))
+            arr[tekI][tekJ - 2] == 0 &&
+            (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 1] == 0)) &&
+            (tekI == arr.length - 1 ||
+                (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 1] == 0))
         ) {
           l = 1;
           if (
-            arr[tekI][tekJ - 3] == 0 &&
-            (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 2] == 0)) &&
-            (tekI == arr.length - 1 ||
-              (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 2] == 0))
+              arr[tekI][tekJ - 3] == 0 &&
+              (tekI == 0 || (tekI - 1 >= 0 && arr[tekI - 1][tekJ - 2] == 0)) &&
+              (tekI == arr.length - 1 ||
+                  (tekI + 1 <= arr.length - 1 && arr[tekI + 1][tekJ - 2] == 0))
           ) {
             l = 2;
           }
@@ -496,7 +520,7 @@ class Arr {
     let max = Math.max.apply(Math, arr[0]);
     for (let i = 1; i < arr.length; i++) {
       max =
-        max < Math.max.apply(Math, arr[i]) ? Math.max.apply(Math, arr[i]) : max;
+          max < Math.max.apply(Math, arr[i]) ? Math.max.apply(Math, arr[i]) : max;
     }
     return max;
   }
@@ -559,45 +583,45 @@ class Arr {
         arr.subtype = 'финиш';
         arr.finish = true;
       } else if (
-        j != 0 &&
-        j != col - 1 &&
-        shab[i][j - 1] != 0 &&
-        shab[i][j + 1] != 0
+          j != 0 &&
+          j != col - 1 &&
+          shab[i][j - 1] != 0 &&
+          shab[i][j + 1] != 0
       ) {
         arr.subtype = 1; // horizont
       } else if (
-        i != 0 &&
-        i != row - 1 &&
-        shab[i - 1][j] != 0 &&
-        shab[i + 1][j] != 0
+          i != 0 &&
+          i != row - 1 &&
+          shab[i - 1][j] != 0 &&
+          shab[i + 1][j] != 0
       ) {
         arr.subtype = 2; // vettical
       } else if (
-        i != row - 1 &&
-        j != col - 1 &&
-        shab[i + 1][j] != 0 &&
-        shab[i][j + 1] != 0
+          i != row - 1 &&
+          j != col - 1 &&
+          shab[i + 1][j] != 0 &&
+          shab[i][j + 1] != 0
       ) {
         arr.subtype = 3; //
       } else if (
-        i != 0 &&
-        j != col - 1 &&
-        shab[i - 1][j] != 0 &&
-        shab[i][j + 1] != 0
+          i != 0 &&
+          j != col - 1 &&
+          shab[i - 1][j] != 0 &&
+          shab[i][j + 1] != 0
       ) {
         arr.subtype = 4; //
       } else if (
-        i != row - 1 &&
-        j != 0 &&
-        shab[i][j - 1] != 0 &&
-        shab[i + 1][j] != 0
+          i != row - 1 &&
+          j != 0 &&
+          shab[i][j - 1] != 0 &&
+          shab[i + 1][j] != 0
       ) {
         arr.subtype = 5; //
       } else if (
-        i != 0 &&
-        j != 0 &&
-        shab[i - 1][j] != 0 &&
-        shab[i][j - 1] != 0
+          i != 0 &&
+          j != 0 &&
+          shab[i - 1][j] != 0 &&
+          shab[i][j - 1] != 0
       ) {
         arr.subtype = 6; //
       }
@@ -620,64 +644,64 @@ function drawPole(arPoles) {
       } else
         switch (arPoles[i][j].subtype) {
           case 'преграда1':
-            {
-              str += `<div class="pole stop1"></div>`;
-            }
+          {
+            str += `<div class="pole stop1"></div>`;
+          }
             break;
           case 'преграда2':
-            {
-              str += `<div class="pole stop2"></div>`;
-            }
+          {
+            str += `<div class="pole stop2"></div>`;
+          }
             break;
           case 'преграда3':
-            {
-              str += `<div class="pole stop3"></div>`;
-            }
+          {
+            str += `<div class="pole stop3"></div>`;
+          }
             break;
           case 'старт':
-            {
-              str += `<div class="pole start" ><div class="pole hero" id="hero"></div></div>`;
-            }
+          {
+            str += `<div class="pole start" ><div class="pole hero" id="hero"></div></div>`;
+          }
             break;
           case 'финиш':
-            {
-              str += `<div class="pole finish"></div>`;
-            }
+          {
+            str += `<div class="pole finish"></div>`;
+          }
             break;
           case 'путин':
-            {
-              str += `<div class="pole putin" id="putin"></div>`;
-            }
+          {
+            str += `<div class="pole putin" id="putin"></div>`;
+          }
             break;
           case 2:
-            {
-              str += `<div class="pole way way1"></div>`;
-            }
+          {
+            str += `<div class="pole way way1"></div>`;
+          }
             break;
           case 1:
-            {
-              str += `<div class="pole way"></div>`;
-            }
+          {
+            str += `<div class="pole way"></div>`;
+          }
             break;
           case 3:
-            {
-              str += `<div class="pole duga"></div>`;
-            }
+          {
+            str += `<div class="pole duga"></div>`;
+          }
             break;
           case 4:
-            {
-              str += `<div class="pole duga duga4"></div>`;
-            }
+          {
+            str += `<div class="pole duga duga4"></div>`;
+          }
             break;
           case 5:
-            {
-              str += `<div class="pole duga duga5"></div>`;
-            }
+          {
+            str += `<div class="pole duga duga5"></div>`;
+          }
             break;
           case 6:
-            {
-              str += `<div class="pole duga duga6"></div>`;
-            }
+          {
+            str += `<div class="pole duga duga6"></div>`;
+          }
             break;
         }
       str += `</div>`;
@@ -696,32 +720,32 @@ function drawAlgorithm(arAlgorithm) {
 
     switch (arAlgorithm[i]['vector']) {
       case 'left':
-        {
-          str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
+      {
+        str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
                 <i class="fa fa-arrow-left"></i> ${arAlgorithm[i].kol}
                 </div>`;
-        }
+      }
         break;
       case 'right':
-        {
-          str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
+      {
+        str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
                 <i class="fa fa-arrow-right"></i> ${arAlgorithm[i].kol}
                 </div>`;
-        }
+      }
         break;
       case 'top':
-        {
-          str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
+      {
+        str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
                 <i class="fa fa-arrow-up"></i> ${arAlgorithm[i].kol}
                 </div>`;
-        }
+      }
         break;
       case 'bottom':
-        {
-          str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
+      {
+        str += `<div class="col-xs-1 algorithmItem" data-algorithmId="${i}">
                 <i class="fa fa-arrow-down"></i> ${arAlgorithm[i].kol}
                 </div>`;
-        }
+      }
         break;
     }
   }
@@ -736,14 +760,14 @@ function drawAlgorithm(arAlgorithm) {
   // );
   if ($('#algorithm .row div').length < 12) {
     $('#algorithm .row div:first-child').css(
-      'margin-left',
-      ($('#algorithm .row').width() - allAlgorithmItemWidth) / 2
+        'margin-left',
+        ($('#algorithm .row').width() - allAlgorithmItemWidth) / 2
     );
   } else if ($('#algorithm .row div').length > 12) {
     $('#algorithm .row div:nth-child(13)').css(
-      'margin-left',
-      ($('#algorithm .row').width() -
-        algorithmItemWidth * ($('#algorithm .row div').length - 12)) /
+        'margin-left',
+        ($('#algorithm .row').width() -
+            algorithmItemWidth * ($('#algorithm .row div').length - 12)) /
         2
     );
   }
