@@ -343,18 +343,20 @@ class Arr {
     let max = 0;
     let sum = 0;
 
-    for (let i = 0; i < 100; i++) {
+    let pocolenie = 30;
+
+    for (let i = 0; i < pocolenie; i++) {
       let maxArr = this.#maxValue(this.#generateArr(row, col, STEP));
       sum += maxArr;
       max = max < maxArr ? maxArr : max;
     }
 
-    let srznach = sum / 100;
+    let srznach = sum / pocolenie;
 
-    /*     console.log(
-      'srznach = ' + srznach + ' or ' + ((row * col) / 100) * srznach + '%'
+    console.log(
+        'srznach = ' + srznach + ' or ' + ((row * col) / 100) * srznach + '%'
     );
-    console.log('max = ' + max + ' or ' + ((row * col) / 100) * max + '%'); */
+    console.log('max = ' + max + ' or ' + ((row * col) / 100) * max + '%');
 
     console.log(
         'itog proc = ',

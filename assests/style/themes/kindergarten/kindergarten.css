@@ -9,15 +9,15 @@
 }
 
 .kindergarten .choose-list .ogonek .item-inner {
-    background-image: url("Ogonek.png");
+    background-image: url("ogonek.png");
 }
 
 .kindergarten .choose-list .veterok .item-inner {
-    background-image: url("Veterok.png");
+    background-image: url("veterok.png");
 }
 
 .kindergarten .choose-list .ross .item-inner {
-    background-image: url("Ross.png");
+    background-image: url("ross.png");
 }
 
 #pole.kapelka .hero {
@@ -25,15 +25,15 @@
 }
 
 #pole.ogonek .hero {
-    background-image: url("Ogonek.png");
+    background-image: url("ogonek.png");
 }
 
 #pole.veterok .hero {
-    background-image: url("Veterok.png");
+    background-image: url("veterok.png");
 }
 
 #pole.ross .hero {
-    background-image: url("Ross.png");
+    background-image: url("ross.png");
 }
 
 .window-game .kindergarten .finish {
