@@ -53,6 +53,21 @@ let themes_settings = {
                 name: 'Росс',
             }
         },
+        barriers: {
+            1: {
+                class: 'stop1',
+                name: 'преграда1',
+            },
+            2: {
+                class: 'stop2',
+                name: 'преграда2',
+            },
+            3: {
+                class: 'stop3',
+                name: 'преграда3',
+            },
+        },
+
     }
 };
 

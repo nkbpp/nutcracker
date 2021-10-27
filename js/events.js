@@ -9,7 +9,7 @@ function even(e) {
       if ($(this).children('i').hasClass('fa-check-circle-o')) {
         if (algCheck.length == 0) {
           $('#ok').addClass('disabled');
-          startAudio('soundFanfary');
+          // startAudio('soundFanfary'); //звук победы
           //if (true) {
           let speed = 400;
           let time = 0;

@@ -12,6 +12,7 @@ function start() {
   arr = new Arr(ROW, COL);
   //console.log('arr=', arr);
   drawPole(arr.poles);
+  console.log("poles = ",arr.poles);
   drawAlgorithm(arr.algorithm);
   algCheck = [];
   algCheck = arr.algorithm.slice();
@@ -558,17 +559,22 @@ class Arr {
     if (shab[i][j] == 0) {
       //Это преграда
       arr.type = 'преграда';
-      switch (this.#getRandomArbitrary(1, 3)) {
-        case 1:
-          arr.subtype = 'преграда1';
-          break;
-        case 2:
-          arr.subtype = 'преграда2';
-          break;
-        case 3:
-          arr.subtype = 'преграда3';
-          break;
-      }
+
+      let n = this.#getRandomArbitrary(1, Object.keys(themes_settings.kindergarten.barriers).length)
+      //themes_settings.kindergarten.barriers[n].class
+      arr.subtype =themes_settings.kindergarten.barriers[n].name;//:TODO ПОДУМОЙ НАД ТЕМАМА
+      /*       switch (this.#getRandomArbitrary(1, Object.keys(themes_settings.kindergarten.barriers).length)) {// ПОДУМОЙ НАД ТЕМАМА
+
+             case 1:
+                arr.subtype = 'преграда1';
+                break;
+              case 2:
+                arr.subtype = 'преграда2';
+                break;
+              case 3:
+                arr.subtype = 'преграда3';
+                break;
+      }*/
 
       shab.length;
     } else {
@@ -644,9 +650,21 @@ function drawPole(arPoles) {
       str += `<div class="col-xs-${12 / colCols}">`;
       if (j == 0 && arPoles[i][j + 1].type == 'старт') {
         str += `<div class="pole home"></div>`;
-      } else
+      } else {
+        switch (arPoles[i][j].type) {
+          case 'преграда':
+          {
+            for (let k = 1; k < Object.keys(themes_settings.kindergarten.barriers).length; k++) {
+              if(themes_settings.kindergarten.barriers[k].name == arPoles[i][j].subtype){
+                str += `<div class="pole " + themes_settings.kindergarten.barriers[k].class + ""></div>`;
+              }
+            }
+
+
+          }
+        }
         switch (arPoles[i][j].subtype) {
-          case 'преграда1':
+/*          case 'преграда1':
           {
             str += `<div class="pole stop1"></div>`;
           }
@@ -660,7 +678,7 @@ function drawPole(arPoles) {
           {
             str += `<div class="pole stop3"></div>`;
           }
-            break;
+            break;*/
           case 'старт':
           {
             str += `<div class="pole start" ><div class="pole hero" id="hero"></div></div>`;
@@ -674,8 +692,7 @@ function drawPole(arPoles) {
           case 'путин':
           {
             str += `<div class="pole putin" id="putin"></div>`;
-          }
-            break;
+          } break;
           case 2:
           {
             str += `<div class="pole way way1"></div>`;
@@ -707,6 +724,7 @@ function drawPole(arPoles) {
           }
             break;
         }
+      }
       str += `</div>`;
     }
     str += '</div>';
