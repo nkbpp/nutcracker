@@ -372,7 +372,8 @@ class Arr {
 
   #createShab2(row, col) {
     let arr;
-    let STEP = 3;
+    let STEP = FACTOR;
+    console.info('STEP ' + STEP);
 
     let procent = this.#arrProc(row, col, STEP);
     //let procent = STEP == 1 ? 34 : STEP == 2 ? 26 : 18;

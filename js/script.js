@@ -128,6 +128,7 @@ $(document).ready(function () {
         $('.factor').removeClass('active');
         $(this).addClass('active');
         FACTOR = $(this).data('factor');
+
         console.log(THEME + " " +
             SUB_THEME + " " +
             HERO + " " +
@@ -138,6 +139,7 @@ $(document).ready(function () {
         $('#pole').addClass(THEME);
         $('#pole').addClass(HERO);
         scroll($(this));
+        start();
     });
 
     /*Выбор темы*/
