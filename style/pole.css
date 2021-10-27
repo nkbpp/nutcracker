@@ -3,8 +3,9 @@
 }
 
 #pole .row {
-  margin: 0;
   max-width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 #pole .row .col-xs-1 {

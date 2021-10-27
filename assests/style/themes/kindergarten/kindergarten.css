@@ -4,6 +4,10 @@
     background-image: url("../Fon.png");
 }
 
+.window-game .putin {
+    background-image: url("politseyskiy.png");
+}
+
 .kindergarten .choose-list .kapelka .item-inner {
     background-image: url("kapelka.png");
 }
