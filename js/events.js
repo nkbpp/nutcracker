@@ -119,8 +119,10 @@ function even(e) {
       }
     }
   } else {
+
     if (algCheck[0].vector == $(this).attr('id')) {
-      if (algCheck[0].kol == ++kolClick) {
+      let check = ++kolClick * FACTOR;
+      if (algCheck[0].kol == check) {
         kolClick = 0;
         algCheck.shift();
         $(
@@ -228,7 +230,7 @@ $(document).ready(function () {
 });
 
 $(document).keydown(function (e) {
-  //console.log(e.which);
+  //console.log(" asdfsdf = " + e.which);
   let contextId = null;
   switch (e.which) {
     case 39:
@@ -247,7 +249,6 @@ $(document).keydown(function (e) {
     {
       contextId = '#ok';
     }
-
       break;
   }
   if (contextId != null && (algCheck.length > 0 || e.which == 13)) {

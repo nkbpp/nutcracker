@@ -38,7 +38,8 @@
 }
 
 #pole .hero {
-  background-image: url(../assests/img/hero.png);
+    /*background-image: url(../assests/img/hero.png);*/
+  background-image: url(../assests/style/themes/kindergarten/kapelka.png);
   background-color: transparent;
   position: absolute;
   z-index: 999999;
@@ -57,7 +58,9 @@
 }
 
 .window-game .finish {
-  background-image: url(../assests/img/ledy.png);
+  /*background-image: url(../assests/img/ledy.png);*/
+  background-image: url(../assests/style/themes/kindergarten/vospitatel.png);
+
 }
 
 .window-game .finish2 {

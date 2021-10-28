@@ -4,3 +4,19 @@
     background-repeat: no-repeat !important;
     background-position: center !important;
 }
+
+#pole.hero1 .hero {
+    background-image: url("kindergarten/kapelka.png");
+}
+
+#pole.hero2 .hero {
+    background-image: url("kindergarten/ogonek.png");
+}
+
+#pole.hero3 .hero {
+    background-image: url("kindergarten/veterok.png");
+}
+
+#pole.hero4 .hero {
+    background-image: url("kindergarten/ross.png");
+}
