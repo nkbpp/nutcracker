@@ -10,10 +10,12 @@ $(window).resize(function () {
 
 function start() {
   arr = new Arr(ROW, COL);
-  //console.log('arr=', arr);
+  console.log('arr=', arr);
   drawPole(arr.poles);
-  console.log("poles = ",arr.poles);
+  //console.log("poles = ",arr.poles);
   drawAlgorithm(arr.algorithm);
+  //console.log("Algorithm = ",arr.algorithm);
+
   algCheck = [];
   algCheck = arr.algorithm.slice();
 }
@@ -22,12 +24,9 @@ class Arr {
   constructor(row, col) {
     // let shab = this.#createShab(row, col);
     //console.log(this.#createShab(row, col))
-    let shab = this.#createShab2(row, col); //!!!УДОЛИТЬ
+    let shab = this.#createShab2(row, col);
     st: for (let i = 0; i < row; i++) {
       for (let j = 0; j < col; j++) {
-        //console.log('i ' + i);
-        //console.log('j ' + j);
-        //console.log(shab[i][j]);
         if (shab[i][j] == 1) {
           this.startI = i;
           this.startJ = j;
@@ -47,19 +46,43 @@ class Arr {
       }
     }
 
+
+//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //add putin
-    while (true) {
+    let maxRoad = this.#maxValue(arr);
+    let n = Object.keys(themes_settings.kindergarten.field_heroes).length; //TODO темы
+    let ii = 1;
+
+    for (let k = 0; k < n; k++) {
+
+      while (true) {
+        let putinJ = Math.round(
+            Math.random() * (this.poles[0].length-1)
+        );
+        let putinI = Math.round(Math.random() * (this.poles.length - 1));
+        console.log("I = ",putinJ," J = ",putinI)
+        console.info(this.poles[putinI][putinJ]);
+        if ( typeof this.poles[putinI][putinJ].type !== 'undefined'  && this.poles[putinI][putinJ].type == 'преграда' && !this.poles[putinI][putinJ].field_heroes) {
+          this.poles[putinI][putinJ].field_heroes = themes_settings.kindergarten.field_heroes[ii++].class;;
+          break;
+        }
+      }
+
+    }
+
+/*    while (true) {
       let putinJ = Math.round(
           Math.random() *
           (this.poles[0].length - 1 - (this.poles[0].length - 2)) +
           (this.poles[0].length - 2)
       );
       let putinI = Math.round(Math.random() * (this.poles.length - 1));
-      if (this.poles[putinI][putinJ].type == 'преграда') {
-        this.poles[putinI][putinJ].subtype = 'путин';
+      console.log("I = ",putinJ," J = ",putinI)
+      if (this.poles[putinI][putinJ].type == 'преграда' && !this.poles[putinI][putinJ].field_heroes) {
+        this.poles[putinI][putinJ].field_heroes = themes_settings.kindergarten.field_heroes[ii++].class;;
         break;
       }
-    }
+    }*/
 
     this.algorithm = [];
     let i = this.startI,
@@ -103,6 +126,26 @@ class Arr {
           break;
       }
     }
+
+
+    n = Object.keys(themes_settings.kindergarten.road_heroes).length+1; //TODO темы
+    ii = 1;
+    let step = Math.ceil(maxRoad/n);
+
+    for (let k = step; k < maxRoad; k+=step) {
+
+      for (let l = 0; l < row; l++) {
+        for (let m = 0; m < col; m++) {
+          if(arr[l][m]==k){
+            this.poles[l][m].chel = themes_settings.kindergarten.road_heroes[ii++].class;
+          }
+        }
+      }
+    }
+
+    console.log('maxd = ', this.#maxValue(arr));
+    console.log('n = ', n);
+    console.log('dfhsdh = ', themes_settings.kindergarten.road_heroes);
     //console.log('algorithm', this.algorithm);
   }
 
@@ -654,12 +697,16 @@ function drawPole(arPoles) {
         switch (arPoles[i][j].type) {
           case 'преграда':
           {
-            for (let k = 1; k < Object.keys(themes_settings.kindergarten.barriers).length; k++) {
-              if(themes_settings.kindergarten.barriers[k].name == arPoles[i][j].subtype){
-                str += `<div class="pole " + themes_settings.kindergarten.barriers[k].class + ""></div>`;
+            console.info('arPoles[i][j].chel ', arPoles[i][j].field_heroes);
+            if(arPoles[i][j].field_heroes){
+              str += `<div class="pole ${arPoles[i][j].field_heroes}"></div>`;
+            } else {
+              for (let k = 1; k < Object.keys(themes_settings.kindergarten.barriers).length + 1; k++) {
+                if (themes_settings.kindergarten.barriers[k].name == arPoles[i][j].subtype) {
+                  str += `<div class="pole ${themes_settings.kindergarten.barriers[k].class}"></div>`;
+                }
               }
             }
-
 
           }
         }
@@ -693,37 +740,88 @@ function drawPole(arPoles) {
           {
             str += `<div class="pole putin" id="putin"></div>`;
           } break;
-          case 2:
-          {
-            str += `<div class="pole way way1"></div>`;
-          }
-            break;
-          case 1:
-          {
-            str += `<div class="pole way"></div>`;
-          }
-            break;
-          case 3:
-          {
-            str += `<div class="pole duga"></div>`;
-          }
-            break;
-          case 4:
-          {
-            str += `<div class="pole duga duga4"></div>`;
-          }
-            break;
-          case 5:
-          {
-            str += `<div class="pole duga duga5"></div>`;
-          }
-            break;
-          case 6:
-          {
-            str += `<div class="pole duga duga6"></div>`;
-          }
-            break;
         }
+
+        /*Показывать или не показывать дорогу*/
+        if (themes_settings.SHOW_ROAD) {
+          switch (arPoles[i][j].subtype) {
+            case 2: //тут потеряно куча часов на дорогу
+            {
+              if (arPoles[i][j].chel) {
+                str += `<div class="pole ${arPoles[i][j].chel}"></div>`;
+              } else {
+                str += `<div class="pole way way1"></div>`;
+              }
+
+            }
+              break;
+            case 1: {
+              if (arPoles[i][j].chel) {
+                str += `<div class="pole ${arPoles[i][j].chel}"></div>`;
+              } else {
+                str += `<div class="pole way"></div>`;
+              }
+
+            }
+              break;
+            case 3: {
+              if (arPoles[i][j].chel) {
+                str += `<div class="pole ${arPoles[i][j].chel}"></div>`;
+              } else {
+                str += `<div class="pole duga"></div>`;
+              }
+
+            }
+              break;
+            case 4: {
+              if (arPoles[i][j].chel) {
+                str += `<div class="pole ${arPoles[i][j].chel}"></div>`;
+              } else {
+                str += `<div class="pole duga duga4"></div>`;
+              }
+
+            }
+              break;
+            case 5: {
+              if (arPoles[i][j].chel) {
+                str += `<div class="pole ${arPoles[i][j].chel}"></div>`;
+              } else {
+                str += `<div class="pole duga duga5"></div>`;
+              }
+
+            }
+              break;
+            case 6: {
+              if (arPoles[i][j].chel) {
+                str += `<div class="pole ${arPoles[i][j].chel}"></div>`;
+              } else {
+                str += `<div class="pole duga duga6"></div>`;
+              }
+
+            }
+              break;
+          }
+        } else {
+          switch (arPoles[i][j].subtype) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6: {
+              if (arPoles[i][j].chel) {
+                str += `<div class="pole ${arPoles[i][j].chel}"></div>`;
+              } else {
+                str += `<div class="pole stop1"></div>`;
+              }
+            }
+              break;
+          }
+        }
+
+
+
+
       }
       str += `</div>`;
     }

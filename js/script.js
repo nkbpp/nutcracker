@@ -1,24 +1,10 @@
 let THEME = 'kindergarten';
 let SUB_THEME = 'main';
 let HERO = 'hero1';
-let FACTOR = 1;
+let FACTOR = 3;
 
 let themes_settings = {
-    // police: {
-    //     name: 'Полиция',
-    //     cssClass: 'police',
-    //     heroes: {
-    //         hero1: {
-    //             class: 'hero1',
-    //         },
-    //         hero2: {
-    //             class: 'hero2',
-    //         },
-    //         hero3: {
-    //             class: 'hero3',
-    //         }
-    //     },
-    // },
+    SHOW_ROAD: false,
     hospital: {
         name: 'Больница',
         cssClass: 'hospital',
@@ -58,6 +44,10 @@ let themes_settings = {
                 class: 'stop1',
                 name: 'преграда1',
             },
+            /*1: {
+                class: 'stop1',
+                name: 'преграда1',
+            },
             2: {
                 class: 'stop2',
                 name: 'преграда2',
@@ -65,6 +55,28 @@ let themes_settings = {
             3: {
                 class: 'stop3',
                 name: 'преграда3',
+            },*/
+        },
+        road_heroes: {
+            1: {
+                class: 'povar',
+            },
+            2: {
+                class: 'vrach',
+            },
+            3: {
+                class: 'nyanya',
+            },
+        },
+        field_heroes: {
+            1: {
+                class: 'balerina',
+            },
+            2: {
+                class: 'politseyskiy',
+            },
+            3: {
+                class: 'pozharnyy',
             },
         },
 
@@ -89,16 +101,18 @@ $(document).ready(function () {
         //             </div>
         //         </div>`;
         // })
-
+        let q = true;
         Object.keys(themes_settings[THEME].heroes).forEach(hero => {
+            console.info('hero' , hero);
             let class_ = themes_settings[THEME].heroes[hero]['class'];
             let name_ = themes_settings[THEME].heroes[hero]['name'];
-            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-hero="${class_}">
+            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-hero="${hero}">
                         <h2>${name_}</h2>
-                   <div class="item-inner">
+                   <div class="item-inner ${q ? ' active' : ''}">
                         <h2></h2>
                    </div>
                 </div>`;
+            q = false;
         })
         $("#hero-window .themes-carousel").html(str);
         $("#hero-window").addClass(THEME);
@@ -151,6 +165,7 @@ $(document).ready(function () {
     });
 
     $('.btn-factor').click(function () {
+        console.info('THEME' , THEME , "HERO" , HERO);
         $('#pole').addClass(THEME);
         $('#pole').addClass(HERO);
         scroll($(this));

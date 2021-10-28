@@ -1,7 +1,15 @@
+/*.duga,*/
+/*.duga2,*/
+/*.duga3,*/
+/*.duga4,*/
+/*.duga5,*/
+/*.duga6*/
+/*.way,*/
+/*.way1,*/
 .window-game .stop1,
 .window-game .stop2,
 .window-game .stop3 {
-    background-image: url("../Fon.png");
+    background-image: url("../Fon.png") !important;
 }
 
 .window-game .putin {
@@ -24,25 +32,28 @@
     background-image: url("ross.png");
 }
 
-#pole.kapelka .hero {
-    background-image: url("kapelka.png");
-}
-
-#pole.ogonek .hero {
-    background-image: url("ogonek.png");
-}
-
-#pole.veterok .hero {
-    background-image: url("veterok.png");
-}
-
-#pole.ross .hero {
-    background-image: url("ross.png");
-}
-
 .window-game .kindergarten .finish {
     background-image: url("vospitatel.png");
 }
 .window-game .kindergarten .finish2 {
     background-image: url("vospitatel.png");
+}
+
+.pole.balerina {
+    background-image: url("balerina.png");
+}
+.pole.politseyskiy {
+    background-image: url("politseyskiy.png");
+}
+.pole.pozharnyy {
+    background-image: url("pozharnyy.png");
+}
+.pole.nyanya {
+    background-image: url("nyanya.png");
+}
+.pole.vrach {
+    background-image: url("vrach.png");
+}
+.pole.povar {
+    background-image: url("povar.png");
 }
