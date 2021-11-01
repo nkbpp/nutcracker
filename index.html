@@ -30,7 +30,7 @@
     <title>Nutcracker</title>
 </head>
 <body>
-<div class="window window-start">
+<div class="window window-start" id="window-start">
     <a href="#hero-window" class="btn btn-default btn-start">
         Старт
     </a>
@@ -124,12 +124,37 @@
             </div>
         </div>
     </div>
+    <div class="container explain-block">
+        <div class="row">
+            <div class="col-xs-4">
+                <a class="btn btn-explain-rules" href="javascript:void(0)" data-audioid="" onkeydown="return (event.keyCode!=13);">
+                    Правила
+                </a>
+                <a class="btn btn-explain-factor" href="javascript:void(0)" data-audioid="" onkeydown="return (event.keyCode!=13);">
+                    Множитель
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 <audio src="music/error.mp3" id="soundError"></audio>
 <audio src="music/correct.mp3" id="soundCorrect"></audio>
 <audio src="music/corr.mp3" id="soundCorr"></audio>
 <!--<audio src="music/fanfary.mp3" id="soundFanfary"></audio>--> <!--звук победы-->
+<audio src="assests/sound/start.mp3" id="audioBtnStart"></audio>
+
+<audio src="assests/sound/hero/kapelka.mp3" id="audioChooseHeroKapelka"></audio>
+<audio src="assests/sound/hero/ogonek.mp3" id="audioChooseHeroOgonek"></audio>
+<audio src="assests/sound/hero/veterok.mp3" id="audioChooseHeroVeterok"></audio>
+<audio src="assests/sound/hero/ross.mp3" id="audioChooseHeroRoss"></audio>
+
+<audio src="assests/sound/factor/factor1.mp3" id="audioChooseFactor1"></audio>
+<audio src="assests/sound/factor/factor2.mp3" id="audioChooseFactor2"></audio>
+<audio src="assests/sound/factor/factor3.mp3" id="audioChooseFactor3"></audio>
+
+<audio src="assests/sound/rules/ruleKindergarden.mp3" id="audioChooseTheme_kindergarten"></audio>
+<audio src="assests/sound/rules/ruleAutumn.mp3" id="audioChooseTheme_autumn"></audio>
 
 <script src="js/jquery-3.5.1.js"></script>
 <script src="js/TouchSwipe-Jquery-Plugin-master/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js"></script>

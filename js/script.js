@@ -25,18 +25,22 @@ let themes_settings = {
             hero1: {
                 class: 'kapelka',
                 name: 'Капелька',
+                audioid: 'audioChooseHeroKapelka',
             },
             hero2: {
                 class: 'ogonek',
                 name: 'Огонек',
+                audioid: 'audioChooseHeroOgonek',
             },
             hero3: {
                 class: 'veterok',
                 name: 'Ветерок',
+                audioid: 'audioChooseHeroVeterok',
             },
             hero4: {
                 class: 'ross',
                 name: 'Росс',
+                audioid: 'audioChooseHeroRoss',
             }
         },
         barriers: {
@@ -106,7 +110,8 @@ $(document).ready(function () {
             console.info('hero' , hero);
             let class_ = themes_settings[THEME].heroes[hero]['class'];
             let name_ = themes_settings[THEME].heroes[hero]['name'];
-            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-hero="${hero}">
+            let audioId_ = themes_settings[THEME].heroes[hero]['audioid'];
+            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-hero="${hero}" data-audioid="${audioId_}">
                         <h2>${name_}</h2>
                    <div class="item-inner ${q ? ' active' : ''}">
                         <h2></h2>
@@ -119,6 +124,7 @@ $(document).ready(function () {
 
         // var heroCarousel = $('.themes-carousel')
         // carouselInit(heroCarousel);
+        startAudio('audioBtnStart');
         scroll($(this))
     });
 
@@ -157,7 +163,7 @@ $(document).ready(function () {
         $('.factor').removeClass('active');
         $(this).addClass('active');
         FACTOR = $(this).data('factor');
-
+        startAudioFactor(FACTOR)
         console.log(THEME + " " +
             SUB_THEME + " " +
             HERO + " " +
@@ -172,6 +178,14 @@ $(document).ready(function () {
         start();
     });
 
+    $('.btn-explain-factor').click(function () {
+        startAudioFactor(FACTOR);
+    });
+
+    $('.btn-explain-rules').click(function () {
+        startAudioTheme();
+    });
+
     /*Выбор темы*/
     $('#themes-list').on('click', '.item-inner', function () {
         $('#themes-list .item-inner').removeClass('active');
@@ -184,6 +198,7 @@ $(document).ready(function () {
         $('#heroes-list .item-inner').removeClass('active');
         $(this).addClass('active');
         HERO = $(this).closest('.item').data('hero');
+        startAudioByElement($(this).closest('.item'))
     });
 
     function generateThemes() {
@@ -217,6 +232,21 @@ $(document).ready(function () {
             easing: "swing"
         });
         return false;
+    }
+
+
+    function startAudioByElement(element){
+        console.info(element);
+        console.info(element.data('audioid'));
+        startAudio(element.data('audioid'))
+    }
+
+    function startAudioFactor(){
+        startAudio('audioChooseFactor' + FACTOR)
+    }
+    function startAudioTheme(){
+        console.info('audioChooseTheme_' + THEME);
+        startAudio('audioChooseTheme_' + THEME)
     }
 
 });

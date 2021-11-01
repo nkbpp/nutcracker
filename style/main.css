@@ -147,3 +147,16 @@ body {
 .item-inner h2 {
     padding: 5rem 0;
 }
+
+/*Блок с кнопками правил*/
+.explain-block {
+    position: relative;
+    bottom: 84px;
+}
+
+.btn-explain-factor,
+.btn-explain-rules {
+    width: auto !important;
+    position: relative !important;
+    left: 0 !important;
+}

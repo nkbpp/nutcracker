@@ -34,7 +34,8 @@
 
 .window-game .home {
   /* background-image: url(assests/img/hero.png); */
-  background-image: url(../assests/img/home.png);
+  /*background-image: url(../assests/img/home.png);*/
+  background-image: url(../assests/style/themes/Fon.png);
 }
 
 #pole .hero {
