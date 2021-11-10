@@ -2,10 +2,10 @@ let THEME = 'kindergarten';
 let SUB_THEME = 'main';
 let HERO = 'hero1';
 let FACTOR = 3;
+let SHOW_ROAD = true;
 
 let themes_settings = {
-    SHOW_ROAD: false,
-    hospital: {
+/*    hospital: {
         name: 'Больница',
         cssClass: 'hospital',
         heroes: {
@@ -16,7 +16,7 @@ let themes_settings = {
                 class: 'hero2',
             }
         },
-    },
+    },*/
     kindergarten: {
         name: 'Детский сад',
         cssClass: 'kindergarten',
@@ -84,6 +84,74 @@ let themes_settings = {
             },
         },
 
+    },
+    autumn: {
+        name: 'Осень',
+        cssClass: 'autumn',
+        target: {},
+        heroes: {
+            hero1: {
+                class: 'kapelka',
+                name: 'Капелька',
+                audioid: 'audioChooseHeroKapelka',
+            },
+            hero2: {
+                class: 'ogonek',
+                name: 'Огонек',
+                audioid: 'audioChooseHeroOgonek',
+            },
+            hero3: {
+                class: 'veterok',
+                name: 'Ветерок',
+                audioid: 'audioChooseHeroVeterok',
+            },
+            hero4: {
+                class: 'ross',
+                name: 'Росс',
+                audioid: 'audioChooseHeroRoss',
+            }
+        },
+        barriers: {
+            1: {
+                class: 'stop1',
+                name: 'преграда1',
+            },
+            /*1: {
+                class: 'stop1',
+                name: 'преграда1',
+            },
+            2: {
+                class: 'stop2',
+                name: 'преграда2',
+            },
+            3: {
+                class: 'stop3',
+                name: 'преграда3',
+            },*/
+        },
+        road_heroes: {
+            1: {
+                class: 'tucha',
+            },
+            2: {
+                class: 'listya',
+            },
+            3: {
+                class: 'zont',
+            },
+            4: {
+                class: 'yezik',
+            },
+        },
+        field_heroes: {
+            1: {
+                class: 'derevo',
+            },
+            2: {
+                class: 'dereviya',
+            },
+        },
+
     }
 };
 
@@ -105,23 +173,7 @@ $(document).ready(function () {
         //             </div>
         //         </div>`;
         // })
-        let q = true;
-        Object.keys(themes_settings[THEME].heroes).forEach(hero => {
-            console.info('hero' , hero);
-            let class_ = themes_settings[THEME].heroes[hero]['class'];
-            let name_ = themes_settings[THEME].heroes[hero]['name'];
-            let audioId_ = themes_settings[THEME].heroes[hero]['audioid'];
-            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-hero="${hero}" data-audioid="${audioId_}">
-                        <h2>${name_}</h2>
-                   <div class="item-inner ${q ? ' active' : ''}">
-                        <h2></h2>
-                   </div>
-                </div>`;
-            q = false;
-        })
-        $("#hero-window .themes-carousel").html(str);
-        $("#hero-window").addClass(THEME);
-
+        generateThemes();
         // var heroCarousel = $('.themes-carousel')
         // carouselInit(heroCarousel);
         startAudio('audioBtnStart');
@@ -135,14 +187,16 @@ $(document).ready(function () {
 
         // THEME = $(".themes-carousel .active").eq(1).find('.item').attr('id');
 
-        Object.keys(themes_settings[THEME].heroes).forEach(hero => {
-            let class_ = themes_settings[THEME].heroes[hero]['class'];
-            str += `<div class="item ${class_}" id="${class_}">
-                    <h2>${class_}</h2>
-                </div>`;
-        })
+        // Object.keys(themes_settings[THEME].heroes).forEach(hero => {
+        //     let class_ = themes_settings[THEME].heroes[hero]['class'];
+        //     str += `<div class="item ${class_}" id="${class_}">
+        //             <h2>${class_}</h2>
+        //         </div>`;
+        // })
+        //
+        // $(".hero-carousel").html(str)
 
-        $(".hero-carousel").html(str)
+        generateViewHeroes();
 
         // var heroCarousel = $('.hero-carousel');
         // carouselInit(heroCarousel);
@@ -191,6 +245,7 @@ $(document).ready(function () {
         $('#themes-list .item-inner').removeClass('active');
         $(this).addClass('active');
         THEME = $(this).closest('.item').data('theme');
+        console.info('theme ', THEME);
     });
 
     /*Выбор героя*/
@@ -202,6 +257,42 @@ $(document).ready(function () {
     });
 
     function generateThemes() {
+        let str = "";
+        let q = true;
+        Object.keys(themes_settings).forEach(theme => {
+            console.info('theme' , theme);
+            let class_ = themes_settings[theme]['cssClass'];
+            let name_ = themes_settings[theme]['name'];
+            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-theme="${theme}">
+                        <h2>${name_}</h2>
+                   <div class="item-inner ${q ? ' active' : ''}">
+                        <h2></h2>
+                   </div>
+                </div>`;
+            q = false;
+        })
+        $("#window-theme .themes-carousel").html(str);
+        $("#window-theme").addClass(THEME);
+    }
+
+    function generateViewHeroes(){
+        let str = "";
+        let q = true;
+        Object.keys(themes_settings[THEME].heroes).forEach(hero => {
+            console.info('hero' , hero);
+            let class_ = themes_settings[THEME].heroes[hero]['class'];
+            let name_ = themes_settings[THEME].heroes[hero]['name'];
+            let audioId_ = themes_settings[THEME].heroes[hero]['audioid'];
+            str += `<div class="item col-md-3 hero ${class_}" id="${class_}" data-hero="${hero}" data-audioid="${audioId_}">
+                        <h2>${name_}</h2>
+                   <div class="item-inner ${q ? ' active' : ''}">
+                        <h2></h2>
+                   </div>
+                </div>`;
+            q = false;
+        })
+        $("#hero-window .themes-carousel").html(str);
+        $("#hero-window").addClass(THEME);
 
     }
 
@@ -225,6 +316,8 @@ $(document).ready(function () {
     }
 
     function scroll(el) {
+        console.info(el);
+        console.info(el.attr("href"));
         $("html, body").animate({
             scrollTop: $(el.attr("href")).offset().top + "px"
         }, {

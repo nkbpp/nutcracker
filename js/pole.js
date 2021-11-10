@@ -743,7 +743,7 @@ function drawPole(arPoles) {
         }
 
         /*Показывать или не показывать дорогу*/
-        if (themes_settings.SHOW_ROAD) {
+        if (SHOW_ROAD) {
           switch (arPoles[i][j].subtype) {
             case 2: //тут потеряно куча часов на дорогу
             {

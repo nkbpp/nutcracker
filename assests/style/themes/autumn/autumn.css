@@ -1,0 +1,49 @@
+
+/*.window-game .putin {*/
+/*    background-image: url("politseyskiy.png");*/
+/*}*/
+
+/*.kindergarten .choose-list .kapelka .item-inner {*/
+/*    background-image: url("kapelka.png");*/
+/*}*/
+
+/*.kindergarten .choose-list .ogonek .item-inner {*/
+/*    background-image: url("ogonek.png");*/
+/*}*/
+
+/*.kindergarten .choose-list .veterok .item-inner {*/
+/*    background-image: url("veterok.png");*/
+/*}*/
+
+/*.kindergarten .choose-list .ross .item-inner {*/
+/*    background-image: url("ross.png");*/
+/*}*/
+
+.window-game .kindergarten .finish {
+    background-image: url("vospitatel.png");
+}
+.window-game .kindergarten .finish2 {
+    background-image: url("vospitatel.png");
+}
+
+.pole.tucha {
+    background-image: url("tucha.JPG");
+}
+.pole.listya {
+    background-image: url("listya.JPG");
+}
+.pole.list {
+    background-image: url("list.JPG");
+}
+.pole.zont {
+    background-image: url("zont.JPG");
+}
+.pole.yezik {
+    background-image: url("yezik.JPG");
+}
+.pole.derevo {
+    background-image: url("derevo.JPG");
+}
+.pole.dereviya {
+    background-image: url("dereviya.JPG");
+}
