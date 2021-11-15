@@ -6,17 +6,35 @@
 }
 
 #pole.hero1 .hero {
-    background-image: url("kindergarten/kapelka.png");
+    background-image: url("../../img/heroes/kapelka.png");
 }
 
 #pole.hero2 .hero {
-    background-image: url("kindergarten/ogonek.png");
+    background-image: url("../../img/heroes/ogonek.png");
 }
 
 #pole.hero3 .hero {
-    background-image: url("kindergarten/veterok.png");
+    background-image: url("../../img/heroes/veterok.png");
 }
 
 #pole.hero4 .hero {
-    background-image: url("kindergarten/ross.png");
+    background-image: url("../../img/heroes/ross.png");
+}
+
+
+
+.choose-list .kapelka .item-inner {
+    background-image: url("../../../assests/img/heroes/kapelka.png") !important;
+}
+
+.choose-list .ogonek .item-inner {
+    background-image: url("../../../assests/img/heroes/ogonek.png") !important;
+}
+
+.choose-list .veterok .item-inner {
+    background-image: url("../../../assests/img/heroes/veterok.png") !important;
+}
+
+.choose-list .ross .item-inner {
+    background-image: url("../../../assests/img/heroes/ross.png") !important;
 }

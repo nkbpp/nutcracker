@@ -50,7 +50,12 @@ class Arr {
 //TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //add putin
     let maxRoad = this.#maxValue(arr);
-    let n = Object.keys(themes_settings.kindergarten.field_heroes).length; //TODO темы
+    console.info('THEME ' , THEME);
+    console.info('THEME ' , THEME);
+    console.info('THEME ' , THEME);
+    console.info('THEME ' , THEME);
+    console.info('themes_settings ' , themes_settings[THEME].field_heroes);
+    let n = Object.keys(themes_settings[THEME].field_heroes).length; //TODO темы
     let ii = 1;
 
     for (let k = 0; k < n; k++) {
@@ -63,7 +68,7 @@ class Arr {
         console.log("I = ",putinJ," J = ",putinI)
         console.info(this.poles[putinI][putinJ]);
         if ( typeof this.poles[putinI][putinJ].type !== 'undefined'  && this.poles[putinI][putinJ].type == 'преграда' && !this.poles[putinI][putinJ].field_heroes) {
-          this.poles[putinI][putinJ].field_heroes = themes_settings.kindergarten.field_heroes[ii++].class;;
+          this.poles[putinI][putinJ].field_heroes = themes_settings[THEME].field_heroes[ii++].class;;
           break;
         }
       }
@@ -79,7 +84,7 @@ class Arr {
       let putinI = Math.round(Math.random() * (this.poles.length - 1));
       console.log("I = ",putinJ," J = ",putinI)
       if (this.poles[putinI][putinJ].type == 'преграда' && !this.poles[putinI][putinJ].field_heroes) {
-        this.poles[putinI][putinJ].field_heroes = themes_settings.kindergarten.field_heroes[ii++].class;;
+        this.poles[putinI][putinJ].field_heroes = themes_settings[THEME].field_heroes[ii++].class;;
         break;
       }
     }*/
@@ -128,7 +133,7 @@ class Arr {
     }
 
 
-    n = Object.keys(themes_settings.kindergarten.road_heroes).length+1; //TODO темы
+    n = Object.keys(themes_settings[THEME].road_heroes).length+1; //TODO темы
     ii = 1;
     let step = Math.ceil(maxRoad/n);
 
@@ -137,7 +142,7 @@ class Arr {
       for (let l = 0; l < row; l++) {
         for (let m = 0; m < col; m++) {
           if(arr[l][m]==k){
-            this.poles[l][m].chel = themes_settings.kindergarten.road_heroes[ii++].class;
+            this.poles[l][m].chel = themes_settings[THEME].road_heroes[ii++].class;
           }
         }
       }
@@ -145,7 +150,7 @@ class Arr {
 
     console.log('maxd = ', this.#maxValue(arr));
     console.log('n = ', n);
-    console.log('dfhsdh = ', themes_settings.kindergarten.road_heroes);
+    console.log('dfhsdh = ', themes_settings[THEME].road_heroes);
     //console.log('algorithm', this.algorithm);
   }
 
@@ -603,10 +608,10 @@ class Arr {
       //Это преграда
       arr.type = 'преграда';
 
-      let n = this.#getRandomArbitrary(1, Object.keys(themes_settings.kindergarten.barriers).length)
-      //themes_settings.kindergarten.barriers[n].class
-      arr.subtype =themes_settings.kindergarten.barriers[n].name;//:TODO ПОДУМОЙ НАД ТЕМАМА
-      /*       switch (this.#getRandomArbitrary(1, Object.keys(themes_settings.kindergarten.barriers).length)) {// ПОДУМОЙ НАД ТЕМАМА
+      let n = this.#getRandomArbitrary(1, Object.keys(themes_settings[THEME].barriers).length)
+      //themes_settings[THEME].barriers[n].class
+      arr.subtype =themes_settings[THEME].barriers[n].name;//:TODO ПОДУМОЙ НАД ТЕМАМА
+      /*       switch (this.#getRandomArbitrary(1, Object.keys(themes_settings[THEME].barriers).length)) {// ПОДУМОЙ НАД ТЕМАМА
 
              case 1:
                 arr.subtype = 'преграда1';
@@ -701,9 +706,9 @@ function drawPole(arPoles) {
             if(arPoles[i][j].field_heroes){
               str += `<div class="pole ${arPoles[i][j].field_heroes}"></div>`;
             } else {
-              for (let k = 1; k < Object.keys(themes_settings.kindergarten.barriers).length + 1; k++) {
-                if (themes_settings.kindergarten.barriers[k].name == arPoles[i][j].subtype) {
-                  str += `<div class="pole ${themes_settings.kindergarten.barriers[k].class}"></div>`;
+              for (let k = 1; k < Object.keys(themes_settings[THEME].barriers).length + 1; k++) {
+                if (themes_settings[THEME].barriers[k].name == arPoles[i][j].subtype) {
+                  str += `<div class="pole ${themes_settings[THEME].barriers[k].class}"></div>`;
                 }
               }
             }

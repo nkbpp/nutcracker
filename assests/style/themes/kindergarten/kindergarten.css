@@ -16,27 +16,11 @@
     background-image: url("politseyskiy.png");
 }
 
-.kindergarten .choose-list .kapelka .item-inner {
-    background-image: url("kapelka.png");
-}
-
-.kindergarten .choose-list .ogonek .item-inner {
-    background-image: url("ogonek.png");
-}
-
-.kindergarten .choose-list .veterok .item-inner {
-    background-image: url("veterok.png");
-}
-
-.kindergarten .choose-list .ross .item-inner {
-    background-image: url("ross.png");
-}
-
 .window-game .kindergarten .finish {
-    background-image: url("vospitatel.png");
+    background-image: url("assests/img/heroes/vospitatel.png");
 }
 .window-game .kindergarten .finish2 {
-    background-image: url("vospitatel.png");
+    background-image: url("assests/img/heroes/vospitatel.png");
 }
 
 .pole.balerina {

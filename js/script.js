@@ -1,4 +1,4 @@
-let THEME = 'kindergarten';
+let THEME = 'autumn';
 let SUB_THEME = 'main';
 let HERO = 'hero1';
 let FACTOR = 3;
