@@ -19,31 +19,28 @@
 /*    background-image: url("ross.png");*/
 /*}*/
 
-.window-game .kindergarten .finish {
-    background-image: url("vospitatel.png");
-}
-.window-game .kindergarten .finish2 {
-    background-image: url("vospitatel.png");
-}
-
-.pole.tucha {
-    background-image: url("tucha.JPG");
-}
-.pole.listya {
-    background-image: url("listya.JPG");
-}
-.pole.list {
-    background-image: url("list.JPG");
-}
-.pole.zont {
-    background-image: url("zont.JPG");
-}
-.pole.yezik {
+.window-game .autumn .finish {
     background-image: url("yezik.JPG");
 }
-.pole.derevo {
+
+.autumn .pole.tucha {
+    background-image: url("tucha.JPG");
+}
+.autumn .pole.listya {
+    background-image: url("listya.JPG");
+}
+.autumn .pole.list {
+    background-image: url("list.JPG");
+}
+.autumn .pole.zont {
+    background-image: url("zont.JPG");
+}
+/*.autumn .pole.yezik {*/
+/*    background-image: url("yezik.JPG");*/
+/*}*/
+.autumn .pole.derevo {
     background-image: url("derevo.JPG");
 }
-.pole.dereviya {
+.autumn .pole.dereviya {
     background-image: url("dereviya.JPG");
 }

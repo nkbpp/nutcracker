@@ -139,9 +139,9 @@ let themes_settings = {
             3: {
                 class: 'zont',
             },
-            4: {
-                class: 'yezik',
-            },
+            // 4: {
+            //     class: 'yezik',
+            // },
         },
         field_heroes: {
             1: {
