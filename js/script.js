@@ -139,9 +139,9 @@ let themes_settings = {
             3: {
                 class: 'zont',
             },
-            // 4: {
-            //     class: 'yezik',
-            // },
+            4: {
+                class: 'ptici',
+            },
         },
         field_heroes: {
             1: {
@@ -149,6 +149,9 @@ let themes_settings = {
             },
             2: {
                 class: 'dereviya',
+            },
+            3: {
+                class: 'cveti',
             },
         },
 
