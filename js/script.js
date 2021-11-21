@@ -1,8 +1,8 @@
-let THEME = 'autumn';
+let THEME = 'road';
 let SUB_THEME = 'main';
 let HERO = 'hero1';
 let FACTOR = 3;
-let SHOW_ROAD = true;
+let SHOW_ROAD = false;
 
 let themes_settings = {
 /*    hospital: {
@@ -155,7 +155,66 @@ let themes_settings = {
             },
         },
 
-    }
+    },
+    road: {
+        name: 'Знаки',
+        cssClass: 'road',
+        target: {},
+        heroes: {
+            hero1: {
+                class: 'kapelka',
+                name: 'Капелька',
+                audioid: 'audioChooseHeroKapelka',
+            },
+            hero2: {
+                class: 'ogonek',
+                name: 'Огонек',
+                audioid: 'audioChooseHeroOgonek',
+            },
+            hero3: {
+                class: 'veterok',
+                name: 'Ветерок',
+                audioid: 'audioChooseHeroVeterok',
+            },
+            hero4: {
+                class: 'ross',
+                name: 'Росс',
+                audioid: 'audioChooseHeroRoss',
+            }
+        },
+        barriers: {
+            1: {
+                class: 'stop1',
+                name: 'преграда1',
+            },
+        },
+        road_heroes: {
+            1: {
+                class: 'right2',
+            },
+            2: {
+                class: 'right3',
+            },
+            // 3: {
+            //     class: 'right3',
+            // },
+        },
+        field_heroes: {
+            1: {
+                class: 'wrong1',
+            },
+            2: {
+                class: 'wrong2',
+            },
+            3: {
+                class: 'wrong3',
+            },
+            4: {
+                class: 'wrong4',
+            },
+        },
+
+    },
 };
 
 

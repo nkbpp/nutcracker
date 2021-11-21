@@ -1,0 +1,28 @@
+
+.window-game .road .finish {
+    background-image: url("right1.JPG");
+}
+
+.road .pole.right2 {
+    background-image: url("right2.JPG");
+}
+
+.road .pole.right3 {
+    background-image: url("right3.JPG");
+}
+
+.road .pole.wrong1 {
+    background-image: url("wrong1.JPG");
+}
+
+.road .pole.wrong2 {
+    background-image: url("wrong2.JPG");
+}
+
+.road .pole.wrong3 {
+    background-image: url("wrong3.JPG");
+}
+
+.road .pole.wrong4 {
+    background-image: url("wrong4.JPG");
+}
